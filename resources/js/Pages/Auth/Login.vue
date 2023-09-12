@@ -17,6 +17,7 @@ const form = useForm({
     password: '',
     remember: false,
 });
+console.log(form)
 
 const submit = () => {
     form.post(route('login'), {
