@@ -25,81 +25,87 @@ const submit = () => {
 <template>
     <GuestLayout>
         <Head title="Register" />
+        <div class="w-100 h-100 d-flex align-center justify-center flex-column">
+            <v-card
+                class="w-100 mx-auto pa-12 pb-8"
+                elevation="8"
+                max-width="448"
+                rounded="lg"
+            >
+                <h1 class="mb-6">登録</h1>
+                <form @submit.prevent="submit">
+                    <div>
+                        <v-text-field
+                            v-model="form.name"
+                            label="名前"
+                            :error="form.errors.name"
+                            :error-messages="form.errors.name"
+                            density="compact"
+                            variant="outlined"
+                            prepend-inner-icon="mdi-account-outline"
+                        ></v-text-field>
+                    </div>
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="name" value="Name" />
+                    <div class="mt-4">
+                        <v-text-field
+                            v-model="form.email"
+                            label="メールアドレス"
+                            type="email"
+                            :error="form.errors.email"
+                            density="compact"
+                            variant="outlined"
+                            :error-messages="form.errors.email"
+                            prepend-inner-icon="mdi-email-outline"
+                        ></v-text-field>
+                    </div>
 
-                <TextInput
-                    id="name"
-                    type="text"
-                    class="mt-1 block w-full"
-                    v-model="form.name"
-                    required
-                    autofocus
-                    autocomplete="name"
-                />
+                    <div class="mt-4">
+                        <v-text-field
+                            v-model="form.password"
+                            label="パスワード"
+                            :error="form.errors.password"
+                            :error-messages="form.errors.password"
+                            density="compact"
+                            variant="outlined"
+                            prepend-inner-icon="mdi-lock-outline"
+                        ></v-text-field>
+                    </div>
 
-                <InputError class="mt-2" :message="form.errors.name" />
-            </div>
+                    <div class="mt-4">
+                        <v-text-field
+                            v-model="form.password_confirmation"
+                            label="パスワード（確認）"
+                            :error="form.errors.password_confirmation"
+                            :error-messages="form.errors.password_confirmation"
+                            density="compact"
+                            variant="outlined"
+                            prepend-inner-icon="mdi-lock-outline"
+                        ></v-text-field>
+                    </div>
 
-            <div class="mt-4">
-                <InputLabel for="email" value="Email" />
+                    <v-btn
+                        type="submit"
+                        block
+                        class="mb-8"
+                        color="blue"
+                        size="large"
+                        variant="tonal"
+                        :disabled="form.processing"
+                        :loading="form.processing"
+                    >
+                        登録
+                    </v-btn>
 
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autocomplete="username"
-                />
-
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
-
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="new-password"
-                />
-
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <div class="mt-4">
-                <InputLabel for="password_confirmation" value="Confirm Password" />
-
-                <TextInput
-                    id="password_confirmation"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password_confirmation"
-                    required
-                    autocomplete="new-password"
-                />
-
-                <InputError class="mt-2" :message="form.errors.password_confirmation" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <Link
-                    :href="route('login')"
-                    class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                >
-                    Already registered?
-                </Link>
-
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Register
-                </PrimaryButton>
-            </div>
-        </form>
+                    <v-card-text class="text-center">
+                        <Link
+                            class="text-blue text-decoration-none"
+                            :href="route('login')"
+                        >
+                            ログインする <v-icon icon="mdi-chevron-right"></v-icon>
+                        </Link>
+                    </v-card-text>
+                </form>
+            </v-card>
+        </div>
     </GuestLayout>
 </template>

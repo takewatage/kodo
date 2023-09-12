@@ -6,18 +6,20 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import { ref } from "vue";
 
 defineProps<{
     canResetPassword?: boolean;
     status?: string;
 }>();
 
+const visible = ref(false)
+const appName = import.meta.env.VITE_APP_NAME
+
 const form = useForm({
     email: '',
     password: '',
-    remember: false,
 });
-console.log(form)
 
 const submit = () => {
     form.post(route('login'), {
@@ -30,64 +32,79 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Log in" />
+        <Head title="Login" />
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-            {{ status }}
+        <div class="w-100 h-100 d-flex align-center justify-center flex-column">
+
+            <h1 class="text-center mb-5"> {{ appName }} ADMIN </h1>
+
+            <v-card
+                class="w-100 mx-auto pa-12 pb-8"
+                elevation="8"
+                max-width="448"
+                rounded="lg"
+            >
+                <form @submit.prevent="submit">
+
+                    <InputError class="mt-2 mb-4" :message="form.errors.email" />
+
+                    <v-text-field
+                        v-model="form.email"
+                        label="Account"
+                        :error="form.errors.email"
+                        density="compact"
+                        placeholder="Email address"
+                        prepend-inner-icon="mdi-email-outline"
+                        variant="outlined"
+                    ></v-text-field>
+
+                    <div class="text-subtitle-1 text-medium-emphasis d-flex align-center justify-space-between">
+                        <Link
+                            class="text-caption text-decoration-none text-blue ml-auto"
+                            v-if="canResetPassword"
+                            :href="route('password.request')"
+                        >
+                            Forgot login password?
+                        </Link>
+                    </div>
+
+                    <v-text-field
+                        v-model="form.password"
+                        :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
+                        :type="visible ? 'text' : 'password'"
+                        density="compact"
+                        placeholder="Enter your password"
+                        prepend-inner-icon="mdi-lock-outline"
+                        variant="outlined"
+                        label="Password"
+                        :error="form.errors.email"
+                        @click:append-inner="visible = !visible"
+                    ></v-text-field>
+                    <v-btn
+                        type="submit"
+                        block
+                        class="mb-8"
+                        color="blue"
+                        size="large"
+                        variant="tonal"
+                        :disabled="form.processing"
+                        :loading="form.processing"
+                    >
+                        ログイン
+                    </v-btn>
+
+                    <v-card-text class="text-center">
+                        <Link
+                            class="text-blue text-decoration-none"
+                            :href="route('register')"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                        >
+                            登録はこちら <v-icon icon="mdi-chevron-right"></v-icon>
+                        </Link>
+                    </v-card-text>
+                </form>
+            </v-card>
         </div>
-
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="email" value="Email" />
-
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autofocus
-                    autocomplete="username"
-                />
-
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
-
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="current-password"
-                />
-
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <div class="block mt-4">
-                <label class="flex items-center">
-                    <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">Remember me</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <Link
-                    v-if="canResetPassword"
-                    :href="route('password.request')"
-                    class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                >
-                    Forgot your password?
-                </Link>
-
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
-                </PrimaryButton>
-            </div>
-        </form>
     </GuestLayout>
 </template>

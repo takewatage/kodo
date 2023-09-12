@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head, useForm } from '@inertiajs/vue3';
-import { onMounted } from "vue";
+import { Head, Link, useForm } from '@inertiajs/vue3';
 
 const props = defineProps<{
-    newsList: [];
+    newsList: Object;
 }>();
 
 const f = new useForm({
@@ -12,7 +11,6 @@ const f = new useForm({
     content: '',
 })
 
-console.log(props.newsList.data)
 const list = props.newsList.data.map(x => new useForm({
     title: x.title,
     content: x.content,
@@ -25,9 +23,11 @@ console.log(list)
     <Head title="Profile" />
 
     <AuthenticatedLayout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">News</h2>
-        </template>
+
+        <v-pagination
+            class="my-4"
+            :length="15"
+        ></v-pagination>
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
