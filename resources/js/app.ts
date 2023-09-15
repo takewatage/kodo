@@ -17,6 +17,9 @@ import '@mdi/font/css/materialdesignicons.css'
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 const vuetify = createVuetify({
+    theme: {
+        defaultTheme: 'dark'
+    },
     components,
     directives,
     icons: {

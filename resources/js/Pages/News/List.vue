@@ -2,20 +2,16 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
-const props = defineProps<{
-    newsList: Object;
+
+defineProps<{
+    newsList: Object
 }>();
 
-const f = new useForm({
+const f = useForm({
     title: '',
     content: '',
 })
 
-const list = props.newsList.data.map(x => new useForm({
-    title: x.title,
-    content: x.content,
-}))
-console.log(list)
 
 </script>
 
@@ -52,21 +48,21 @@ console.log(list)
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="item in list"
-                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ item.title }}
-                                </th>
-                                <td class="px-6 py-4">
-                                    {{ item.content }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    2023/11/2
-                                </td>
-                                <td class="px-6 py-4">
-                                    2023/11/2
-                                </td>
-                            </tr>
+<!--                            <tr v-for="item in newsList"-->
+<!--                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">-->
+<!--                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">-->
+<!--                                    {{ item }}-->
+<!--                                </th>-->
+<!--                                <td class="px-6 py-4">-->
+<!--                                    {{ item.content }}-->
+<!--                                </td>-->
+<!--                                <td class="px-6 py-4">-->
+<!--                                    2023/11/2-->
+<!--                                </td>-->
+<!--                                <td class="px-6 py-4">-->
+<!--                                    2023/11/2-->
+<!--                                </td>-->
+<!--                            </tr>-->
 
                             </tbody>
                         </table>

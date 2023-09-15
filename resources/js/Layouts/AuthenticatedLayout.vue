@@ -2,7 +2,7 @@
 import { ref, Transition } from 'vue';
 import { Link, router } from '@inertiajs/vue3';
 
-const drawer = ref(null)
+const drawer = ref(false)
 const appName = import.meta.env.VITE_APP_NAME
 const items = [
     {
