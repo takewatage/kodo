@@ -5,6 +5,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, useForm } from '@inertiajs/vue3';
+import AuthCard from "@/Components/Auth/AuthCard.vue";
 
 const props = defineProps<{
     email: string;
@@ -29,60 +30,65 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Reset Password" />
+        <Head title="パスワードリセット" />
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="email" value="Email" />
+        <AuthCard
+            card-title="パスワードリセット"
+        >
+            <v-form @submit.prevent="submit">
+                <div>
+                    <v-text-field
+                        autofocus
+                        v-model="form.email"
+                        label="メールアドレス"
+                        :error="form.errors.hasOwnProperty('email')"
+                        :error-messages="form.errors.email"
+                        density="compact"
+                        placeholder="example.com"
+                        prepend-inner-icon="mdi-email-outline"
+                        variant="outlined"
+                    ></v-text-field>
+                </div>
 
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autofocus
-                    autocomplete="username"
-                />
+                <div class="mt-4">
+                    <v-text-field
+                        v-model="form.password"
+                        label="パスワード"
+                        :error="form.errors.hasOwnProperty('password')"
+                        :error-messages="form.errors.password"
+                        density="compact"
+                        variant="outlined"
+                        prepend-inner-icon="mdi-lock-outline"
+                    ></v-text-field>
+                </div>
 
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
+                <div class="mt-4">
+                    <v-text-field
+                        v-model="form.password_confirmation"
+                        label="パスワード（確認）"
+                        :error="form.errors.hasOwnProperty('password_confirmation')"
+                        :error-messages="form.errors.password_confirmation"
+                        density="compact"
+                        variant="outlined"
+                        prepend-inner-icon="mdi-lock-outline"
+                    ></v-text-field>
+                </div>
 
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="new-password"
-                />
-
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <div class="mt-4">
-                <InputLabel for="password_confirmation" value="Confirm Password" />
-
-                <TextInput
-                    id="password_confirmation"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password_confirmation"
-                    required
-                    autocomplete="new-password"
-                />
-
-                <InputError class="mt-2" :message="form.errors.password_confirmation" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Reset Password
-                </PrimaryButton>
-            </div>
-        </form>
+                <div class="flex items-center justify-end mt-4">
+                    <v-btn
+                        type="submit"
+                        block
+                        class="mb-8"
+                        color="blue"
+                        size="large"
+                        variant="tonal"
+                        :disabled="form.processing"
+                        :loading="form.processing"
+                    >
+                        パスワードリセット
+                    </v-btn>
+                </div>
+            </v-form>
+        </AuthCard>
     </GuestLayout>
 </template>

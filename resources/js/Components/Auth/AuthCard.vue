@@ -30,6 +30,7 @@ const props = defineProps<{
 <style lang="scss">
 .auth-card {
     max-width: 600px;
+    width: 100%;
 
     form {
         max-width: 330px;

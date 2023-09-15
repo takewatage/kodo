@@ -5,6 +5,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, useForm } from '@inertiajs/vue3';
+import AuthCard from "@/Components/Auth/AuthCard.vue";
 
 defineProps<{
     status?: string;
@@ -24,37 +25,44 @@ const submit = () => {
         <Head title="Forgot Password" />
 
 
+        <auth-card>
+            <v-alert v-if="status" color="success" class="mb-5">
+                {{ status }}
+            </v-alert>
 
-        <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-            パスワードを変更するには、アカウントに登録されたメールアドレスを入力してください。
-        </div>
+            <p class="mb-4">
+                パスワードを変更するには、アカウントに登録されたメールアドレスを入力してください。
+            </p>
+            <v-form @submit.prevent="submit">
+                <div>
+                    <v-text-field
+                        autofocus
+                        v-model="form.email"
+                        label="メールアドレス"
+                        :error="form.errors.hasOwnProperty('email')"
+                        :error-messages="form.errors.email"
+                        density="compact"
+                        placeholder="example.com"
+                        prepend-inner-icon="mdi-email-outline"
+                        variant="outlined"
+                    ></v-text-field>
+                </div>
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
-            {{ status }}
-        </div>
-
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="email" value="Email" />
-
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autofocus
-                    autocomplete="username"
-                />
-
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Email Password Reset Link
-                </PrimaryButton>
-            </div>
-        </form>
+                <div class="mt-2">
+                    <v-btn
+                        type="submit"
+                        block
+                        class="mb-8"
+                        color="blue"
+                        size="large"
+                        variant="tonal"
+                        :disabled="form.processing"
+                        :loading="form.processing"
+                    >
+                        パスワードリセットリンク送信
+                    </v-btn>
+                </div>
+            </v-form>
+        </auth-card>
     </GuestLayout>
 </template>

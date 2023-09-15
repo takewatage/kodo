@@ -4,16 +4,37 @@ import { Link, router } from '@inertiajs/vue3';
 
 const drawer = ref(false)
 const appName = import.meta.env.VITE_APP_NAME
-const items = [
+
+interface IItem {
+    title: string
+    href: string
+    method: string
+}
+
+const items: IItem[] = [
     {
         title: 'プロフィール',
-        href: 'profile.edit',
+        href: 'profile',
+        method: 'visit',
     },
     {
         title: 'ニュース',
-        href: 'news.list',
+        href: 'news',
+        method: 'visit',
+    },
+    {
+        title: 'ログアウト',
+        href: 'logout',
+        method: 'post',
     },
 ]
+
+const goPage = (item) => {
+    if(item.method === 'post') {
+        return router.post(item.href)
+    }
+    router.visit(item.href)
+}
 
 </script>
 
@@ -23,7 +44,7 @@ const items = [
             <v-list>
                 <v-list-item
                     v-for="item in items"
-                    :href="route(item.href)"
+                    @click="goPage(item)"
                     :title="item.title"
                     :key="item.title"
                     color="primary"

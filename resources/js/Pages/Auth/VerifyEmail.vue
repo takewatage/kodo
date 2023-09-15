@@ -23,7 +23,7 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
         <Head title="Email Verification" />
 
         <AuthCard>
-            <v-alert color="success" class="mb-5">
+            <v-alert v-if="verificationLinkSent" color="success" class="mb-5">
                 新しい確認リンクが、登録時に指定した電子メール アドレスに送信されました。
             </v-alert>
             <p>
