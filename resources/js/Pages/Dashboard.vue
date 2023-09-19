@@ -1,20 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Head, Link } from "@inertiajs/vue3";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-
-
-const props = defineProps<{
-    auth: {};
-}>();
-
-
+import { Head } from '@inertiajs/vue3'
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 </script>
 
 <template>
-    <Head title="Register" />
+  <Head title="Register" />
 
-    <AuthenticatedLayout>
-
-    </AuthenticatedLayout>
+  <AuthenticatedLayout> </AuthenticatedLayout>
 </template>

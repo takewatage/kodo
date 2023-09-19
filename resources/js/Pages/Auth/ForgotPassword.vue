@@ -1,68 +1,65 @@
 <script setup lang="ts">
-import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
-import { Head, useForm } from '@inertiajs/vue3';
-import AuthCard from "@/Components/Auth/AuthCard.vue";
+import GuestLayout from '@/Layouts/GuestLayout.vue'
+import { Head, useForm } from '@inertiajs/vue3'
+import AuthCard from '@/Components/Auth/AuthCard.vue'
 
 defineProps<{
-    status?: string;
-}>();
+  status?: string
+}>()
 
 const form = useForm({
-    email: '',
-});
+  email: '',
+})
 
 const submit = () => {
-    form.post(route('password.email'));
-};
+  form.post(route('password.email'))
+}
 </script>
 
 <template>
-    <GuestLayout>
-        <Head title="Forgot Password" />
+  <GuestLayout>
+    <Head title="Forgot Password" />
 
+    <auth-card>
+      <v-alert
+        v-if="status"
+        color="success"
+        class="mb-5"
+      >
+        {{ status }}
+      </v-alert>
 
-        <auth-card>
-            <v-alert v-if="status" color="success" class="mb-5">
-                {{ status }}
-            </v-alert>
+      <p class="mb-4">パスワードを変更するには、アカウントに登録されたメールアドレスを入力してください。</p>
+      <v-form @submit.prevent="submit">
+        <div>
+          <v-text-field
+            v-model="form.email"
+            autofocus
+            label="メールアドレス"
+            :error="form.errors.hasOwnProperty('email')"
+            :error-messages="form.errors.email"
+            density="compact"
+            placeholder="example.com"
+            prepend-inner-icon="mdi-email-outline"
+            variant="outlined"
+          ></v-text-field>
+        </div>
 
-            <p class="mb-4">
-                パスワードを変更するには、アカウントに登録されたメールアドレスを入力してください。
-            </p>
-            <v-form @submit.prevent="submit">
-                <div>
-                    <v-text-field
-                        autofocus
-                        v-model="form.email"
-                        label="メールアドレス"
-                        :error="form.errors.hasOwnProperty('email')"
-                        :error-messages="form.errors.email"
-                        density="compact"
-                        placeholder="example.com"
-                        prepend-inner-icon="mdi-email-outline"
-                        variant="outlined"
-                    ></v-text-field>
-                </div>
-
-                <div class="mt-2">
-                    <v-btn
-                        type="submit"
-                        block
-                        class="mb-8"
-                        color="blue"
-                        size="large"
-                        variant="tonal"
-                        :disabled="form.processing"
-                        :loading="form.processing"
-                    >
-                        パスワードリセットリンク送信
-                    </v-btn>
-                </div>
-            </v-form>
-        </auth-card>
-    </GuestLayout>
+        <div class="mt-2">
+          <v-btn
+            type="submit"
+            block
+            class="mb-8"
+            color="blue"
+            size="large"
+            variant="tonal"
+            :disabled="form.processing"
+            :loading="form.processing"
+          >
+            パスワードリセットリンク送信
+          </v-btn>
+        </div>
+      </v-form>
+    </auth-card>
+  </GuestLayout>
 </template>
