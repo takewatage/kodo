@@ -29,7 +29,7 @@ const items: IItem[] = [
   },
 ]
 
-const goPage = (item) => {
+const goPage = (item: IItem) => {
   if (item.method === 'post') {
     return router.post(item.href)
   }
