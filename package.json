@@ -30,6 +30,7 @@
     },
     "dependencies": {
         "@mdi/font": "^7.2.96",
+        "@team-decorate/alcts": "^1.7.0",
         "vite-plugin-vuetify": "^1.0.2"
     }
 }

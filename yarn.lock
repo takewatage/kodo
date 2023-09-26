@@ -223,6 +223,15 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@team-decorate/alcts@^1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@team-decorate/alcts/-/alcts-1.7.0.tgz#76b217dbf7b1a35bb0114b599819fa1a52c3e206"
+  integrity sha512-Y6vofeIFSXS0U7XSOwAA4g2M2kpkVOzRj/SDGZy6BfWUhCD7BsyueIKonSteOJARMlFsHjuZ2u3ry3ToIiEsmw==
+  dependencies:
+    "@types/pluralize" "^0.0.29"
+    pluralize "^8.0.0"
+    vform "^2.1.2"
+
 "@types/history@^4.7.11":
   version "4.7.11"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.11.tgz#56588b17ae8f50c53983a524fc3cc47437969d64"
@@ -232,6 +241,11 @@
   version "7.0.13"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.13.tgz#02c24f4363176d2d18fc8b70b9f3c54aba178a85"
   integrity sha512-RbSSoHliUbnXj3ny0CNFOoxrIDV6SUGyStHsvDqosw6CkdPV8TtWGlfecuK4ToyMEAql6pzNxgCFKanovUzlgQ==
+
+"@types/pluralize@^0.0.29":
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/@types/pluralize/-/pluralize-0.0.29.tgz#6ffa33ed1fc8813c469b859681d09707eb40d03c"
+  integrity sha512-BYOID+l2Aco2nBik+iYS4SZX0Lf20KPILP5RGmM1IgzdwNdTs0eebiFriOPcej1sX9mLnSoiNte5zcFxssgpGA==
 
 "@types/semver@^7.3.12":
   version "7.5.2"
@@ -1442,6 +1456,11 @@ pkg-dir@^4.1.0:
   dependencies:
     find-up "^4.0.0"
 
+pluralize@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
+  integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
+
 postcss-selector-parser@^6.0.13:
   version "6.0.13"
   resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-6.0.13.tgz#d05d8d76b1e8e173257ef9d60b706a8e5e99bf1b"
@@ -1664,6 +1683,11 @@ util-deprecate@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
+
+vform@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/vform/-/vform-2.1.2.tgz#4d52ccfb3f162de76d01ac6ce26d15693b6c8e65"
+  integrity sha512-Nobg/0ckWHYQAjJJqucOyRv/a3enO40f087KBpkSUCl0eRQTE8qmUqk/l5gmbxhD8UO3A8dDiSRWKmKF8+l4YQ==
 
 vite-plugin-full-reload@^1.0.5:
   version "1.0.5"
