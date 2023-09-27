@@ -2,17 +2,19 @@
 
 namespace Database\Seeders;
 
-use App\Models\News;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class NewsSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        News::factory(10)->create();
+        \App\Models\User::factory()->create([
+            'name' => 'テスト 太郎',
+            'email' => 'test@test.com',
+        ]);
+        \App\Models\User::factory(10)->create();
     }
 }
