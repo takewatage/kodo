@@ -17,10 +17,10 @@ const vuetify = createVuetify({
         themes: {
             dark: {
                 colors: {
-                    primary: "#dbc5a4",
+                    primary: '#dbc5a4',
                 },
             },
-        }
+        },
     },
     icons: {
         defaultSet: 'mdi',

@@ -1,13 +1,12 @@
 <script setup lang="ts">
 const props = withDefaults(
     defineProps<{
-        width: number;
+        width: number
     }>(),
     {
         width: 350,
     }
-);
-
+)
 </script>
 
 <template>
@@ -20,10 +19,9 @@ const props = withDefaults(
             :width="props.width"
             class="pa-2"
         >
-            <slot/>
+            <slot />
         </v-sheet>
     </v-col>
 </template>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

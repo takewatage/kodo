@@ -29,11 +29,7 @@ const items: IItem[] = [
     },
 ]
 
-const list = [
-    'ホーム',
-    'タイムライン',
-    'メンバーの投稿',
-]
+const list = ['ホーム', 'タイムライン', 'メンバーの投稿']
 
 const goPage = (item: IItem) => {
     if (item.method === 'post') {
@@ -75,7 +71,6 @@ const goPage = (item: IItem) => {
                         icon
                         v-bind="props"
                     >
-
                         <v-avatar
                             class="hidden-sm-and-down"
                             color="success"
