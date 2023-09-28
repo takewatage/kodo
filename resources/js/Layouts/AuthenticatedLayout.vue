@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { router } from '@inertiajs/vue3'
+import { router, usePage } from '@inertiajs/vue3'
 
-const drawer = ref(false)
-const appName = import.meta.env.VITE_APP_NAME
+const page = usePage()
+const appName: string = page.props.appName
 
 interface IItem {
     title: string
@@ -29,6 +29,12 @@ const items: IItem[] = [
     },
 ]
 
+const list = [
+    'ホーム',
+    'タイムライン',
+    'メンバーの投稿',
+]
+
 const goPage = (item: IItem) => {
     if (item.method === 'post') {
         return router.post(item.href)
@@ -39,29 +45,57 @@ const goPage = (item: IItem) => {
 
 <template>
     <v-app>
-        <v-navigation-drawer v-model="drawer">
-            <v-list>
-                <v-list-item
-                    v-for="item in items"
-                    :key="item.title"
-                    :title="item.title"
-                    color="primary"
-                    @click="goPage(item)"
-                >
-                </v-list-item>
-            </v-list>
-        </v-navigation-drawer>
+        <v-app-bar class="px-3">
+            <h3 class="font-weight-bold">
+                {{ appName }}
+            </h3>
 
-        <v-app-bar>
-            <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+            <v-spacer></v-spacer>
 
-            <v-app-bar-title>{{ appName }}</v-app-bar-title>
-
-            <v-btn
-                class="ma-2"
+            <v-tabs
+                class="mt-auto"
+                height="50"
+                centered
                 color="primary"
-                icon="mdi-account-outline"
-            ></v-btn>
+            >
+                <v-tab
+                    v-for="link in list"
+                    :key="link"
+                    :text="link"
+                ></v-tab>
+            </v-tabs>
+            <v-spacer></v-spacer>
+
+            <v-menu
+                width="260"
+                transition="scale-transition"
+            >
+                <template v-slot:activator="{ props }">
+                    <v-btn
+                        icon
+                        v-bind="props"
+                    >
+
+                        <v-avatar
+                            class="hidden-sm-and-down"
+                            color="success"
+                            size="32"
+                        ></v-avatar>
+                    </v-btn>
+                </template>
+
+                <v-list>
+                    <v-list-item
+                        class="focus:outline-none"
+                        v-for="item in items"
+                        :key="item.title"
+                        :title="item.title"
+                        color="primary"
+                        @click="goPage(item)"
+                    >
+                    </v-list-item>
+                </v-list>
+            </v-menu>
         </v-app-bar>
 
         <v-main>
@@ -78,7 +112,7 @@ const goPage = (item: IItem) => {
     </v-app>
 </template>
 
-<style>
+<style lang="scss" scoped>
 .page-enter-active,
 .page-leave-active {
     transition: all 1s ease-out;
