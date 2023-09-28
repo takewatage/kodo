@@ -52,7 +52,7 @@ const submit = () => {
                 <div class="text-subtitle-1 text-medium-emphasis d-flex align-center justify-space-between">
                     <Link
                         v-if="canResetPassword"
-                        class="text-caption text-decoration-none text-blue ml-auto"
+                        class="text-caption text-primary ml-auto"
                         :href="route('password.request')"
                     >
                         パスワードを忘れた場合はこちら
@@ -86,7 +86,7 @@ const submit = () => {
 
                 <v-card-text class="text-center">
                     <Link
-                        class="text-blue text-decoration-none"
+                        class="text-primary"
                         :href="route('register')"
                         rel="noopener noreferrer"
                         target="_blank"
