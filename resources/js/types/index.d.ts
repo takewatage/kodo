@@ -1,6 +1,7 @@
 export interface IUser {
     id: number
     name: string
+    urlName: string
     email: string
     emailVerifiedAt: string | null
     role: number
