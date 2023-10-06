@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import InputError from '@/Components/InputError.vue'
-import InputLabel from '@/Components/InputLabel.vue'
-import PrimaryButton from '@/Components/PrimaryButton.vue'
-import TextInput from '@/Components/TextInput.vue'
 import { Link, useForm, usePage } from '@inertiajs/vue3'
 import User from '@/models/User'
 
@@ -10,7 +6,7 @@ defineProps<{
     mustVerifyEmail?: boolean
     status?: string
 }>()
-const emit = defineEmits(['onUpdate'])
+const emit = defineEmits(['onSuccess'])
 const user: User = new User(usePage().props.auth.user)
 
 const form = useForm({
@@ -21,7 +17,7 @@ const form = useForm({
 
 const submit = () => {
     form.patch(route('profile.update'), {
-        onSuccess: () => emit('onUpdate'),
+        onSuccess: () => emit('onSuccess'),
     })
 }
 </script>
@@ -84,7 +80,6 @@ const submit = () => {
             </div>
 
             <v-btn
-                @click="submit"
                 block
                 class="mb-8"
                 color="blue"
@@ -92,6 +87,7 @@ const submit = () => {
                 variant="tonal"
                 :disabled="form.processing"
                 :loading="form.processing"
+                @click="submit"
             >
                 更新
             </v-btn>

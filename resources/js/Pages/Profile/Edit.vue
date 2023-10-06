@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Head, useForm, usePage } from '@inertiajs/vue3'
+import { Head, usePage } from '@inertiajs/vue3'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfileInformationForm.vue'
 import User from '@/models/User'
@@ -80,7 +80,7 @@ fetchAuth()
                         <v-card-item>
                             <UpdateProfileInformationForm
                                 :must-verify-email="mustVerifyEmail"
-                                @onUpdate="fetchAuth"
+                                @on-success="fetchAuth"
                             />
                         </v-card-item>
                     </v-card>

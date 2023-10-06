@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { router, usePage } from '@inertiajs/vue3'
 
 const page = usePage()
@@ -66,7 +65,7 @@ const goPage = (item: IItem) => {
                 width="260"
                 transition="scale-transition"
             >
-                <template v-slot:activator="{ props }">
+                <template #activator="{ props }">
                     <v-btn
                         icon
                         v-bind="props"
@@ -81,9 +80,9 @@ const goPage = (item: IItem) => {
 
                 <v-list>
                     <v-list-item
-                        class="focus:outline-none"
                         v-for="item in items"
                         :key="item.title"
+                        class="focus:outline-none"
                         :title="item.title"
                         color="primary"
                         @click="goPage(item)"
