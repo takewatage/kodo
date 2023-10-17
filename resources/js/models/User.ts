@@ -5,6 +5,7 @@ const fillable = ['id', 'name', 'email', 'role', 'introduction']
 export default class User extends Model implements IUser {
     id = 0
     name = ''
+    urlName = ''
     email = ''
     emailVerifiedAt = null
     role = 0

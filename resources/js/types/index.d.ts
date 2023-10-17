@@ -8,6 +8,16 @@ export interface IUser {
     introduction: string
 }
 
+export interface IPost {
+    id: number
+    groupId: number
+    userId: number
+    title: string
+    content: string
+    viewAuthType: number | null
+    createdAt: string
+}
+
 export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
     auth: {
         user: IUser

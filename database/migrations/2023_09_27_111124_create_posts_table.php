@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('group_id')->nullable()->constrained('groups');
+            $table->text('title')->nullable()->comment('タイトル');
             $table->text('content')->comment('本文');
             $table->integer('view_auth_type')->default(0)->comment('閲覧権限');
             $table->timestamps();

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { router, usePage } from '@inertiajs/vue3'
+import { useVariableCss } from '@/consts/variableCss'
 
 const page = usePage()
 const appName: string = page.props.appName
@@ -40,7 +41,10 @@ const goPage = (item: IItem) => {
 
 <template>
     <v-app>
-        <v-app-bar class="px-3">
+        <v-app-bar
+            class="px-3"
+            :height="useVariableCss['--header-height']"
+        >
             <h3 class="font-weight-bold">
                 {{ appName }}
             </h3>
@@ -49,7 +53,6 @@ const goPage = (item: IItem) => {
 
             <v-tabs
                 class="mt-auto"
-                height="50"
                 centered
                 color="primary"
             >
