@@ -20,7 +20,7 @@ export default defineConfig({
         vuetify({
             customVariables: ['resources/sass/variables.scss'],
             autoImport: true,
-            styles: 'sass',
+            styles: { configFile: 'resources/sass/settings.scss' },
             treeShake: true,
         }),
     ],

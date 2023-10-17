@@ -7,6 +7,7 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m'
 import { createVuetify } from 'vuetify'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import '@mdi/font/css/materialdesignicons.css'
+import 'vuetify/styles'
 import '../sass/app.scss'
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel'
