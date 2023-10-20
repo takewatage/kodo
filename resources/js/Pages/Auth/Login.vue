@@ -98,3 +98,10 @@ const submit = () => {
         </AuthCard>
     </GuestLayout>
 </template>
+
+<style scoped lang="scss">
+@use '/resources/sass/variables.module';
+.test {
+    font-size: variables.$font-small;
+}
+</style>

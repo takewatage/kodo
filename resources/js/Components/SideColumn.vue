@@ -25,7 +25,7 @@ const props = withDefaults(
 </template>
 
 <style lang="scss" scoped>
-@use '/resources/sass/variables';
+@use '/resources/sass/variables.module';
 .side-column {
     min-height: variables.$headerHeight;
 }

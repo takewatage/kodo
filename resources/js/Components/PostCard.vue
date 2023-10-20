@@ -2,9 +2,6 @@
 import { Link } from '@inertiajs/vue3'
 import Post from '@/models/Post'
 
-const texxt =
-    'LINQとは統合言語クエリ (LINQ: Language-Integrated Query)の略でC＃言語などに使われる配列操作を簡単にすることができものです。簡単に言うとforeachの上位互換です。'
-
 defineProps<{
     post: Post
 }>()
@@ -32,7 +29,7 @@ defineProps<{
 </template>
 
 <style lang="scss" scoped>
-@use '/resources/sass/variables';
+@use '/resources/sass/variables.module';
 .post-card {
     background: rgba(var(--v-theme-surface));
     border-radius: 10px;

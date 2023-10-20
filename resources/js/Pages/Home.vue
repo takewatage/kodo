@@ -23,12 +23,12 @@ const goLink = (pageNum: ILink) => {
 </script>
 
 <template>
-    <Head title="Register" />
+    <Head title="Home" />
 
     <AuthenticatedLayout>
         <v-container>
             <v-row>
-                <SideColumn :width="250"> </SideColumn>
+                <SideColumn :width="250" />
 
                 <v-col
                     cols="12"

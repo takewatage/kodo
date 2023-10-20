@@ -32,7 +32,10 @@
         "@mdi/font": "^7.2.96",
         "@team-decorate/alcts": "^1.7.0",
         "@vueuse/core": "^10.5.0",
+        "autoprefixer": "^10.4.16",
+        "css-declaration-sorter": "^7.1.1",
         "dayjs": "^1.11.10",
+        "postcss": "^8.4.31",
         "vite-plugin-vuetify": "^1.0.2"
     }
 }
