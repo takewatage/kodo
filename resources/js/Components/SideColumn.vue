@@ -11,7 +11,7 @@ const props = withDefaults(
 
 <template>
     <v-col
-        class="side-col"
+        class="side-col d-none d-lg-block"
         cols="auto"
     >
         <v-sheet
@@ -27,6 +27,6 @@ const props = withDefaults(
 <style lang="scss" scoped>
 @use '/resources/sass/variables.module';
 .side-column {
-    min-height: variables.$headerHeight;
+    min-height: calc(100vh - #{variables.$headerHeight + px} - 32px);
 }
 </style>

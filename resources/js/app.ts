@@ -35,6 +35,14 @@ const vuetify = createVuetify({
     },
     display: {
         mobileBreakpoint: 'sm',
+        thresholds: {
+            xs: 0,
+            sm: 340,
+            md: 540,
+            lg: 768,
+            xl: 1080,
+            xxl: 1280,
+        },
     },
 })
 
