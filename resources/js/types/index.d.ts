@@ -18,6 +18,11 @@ export interface IPost {
     createdAt: string
 }
 
+export interface ILink {
+    href: string
+    method?: string
+}
+
 export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
     auth: {
         user: IUser

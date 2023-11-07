@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreGroupRequest;
 use App\Http\Requests\UpdateGroupRequest;
 use App\Models\Group;
+use App\Models\Post;
+use Inertia\Inertia;
 
 class GroupController extends Controller
 {
@@ -14,6 +16,18 @@ class GroupController extends Controller
     public function index()
     {
         //
+    }
+
+    public function GroupPosts(): \Inertia\Response
+    {
+        $posts = Post::query()
+            ->with(['user', 'group'])
+            ->paginate(5)
+            ->withQueryString();
+
+        return Inertia::render('GroupPosts/index', [
+            'posts' => $posts,
+        ]);
     }
 
     /**

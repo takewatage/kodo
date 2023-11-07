@@ -1,8 +1,6 @@
-import { Paginate } from '@team-decorate/alcts'
-import Model from '@team-decorate/alcts/dist/Model'
 import { IIndexable } from '@team-decorate/alcts/dist/interfaces/IIndexxable'
 
-export interface ILink {
+export interface IPaginateLink {
     active: boolean
     label: string
     url?: string
@@ -14,7 +12,7 @@ interface PaginationData<T> {
     from: number
     last_page: number
     last_page_url: string
-    links: ILink[]
+    links: IPaginateLink[]
     next_page_url: string | null
     path: string
     per_page: number
@@ -30,7 +28,7 @@ export default class PaginationModel<T> {
     from = 0
     lastPage = 0
     lastPageUrl = ''
-    links: ILink[] = []
+    links: IPaginateLink[] = []
     nextPageUrl: string | null = null
     path = ''
     perPage = 0
@@ -55,7 +53,7 @@ export default class PaginationModel<T> {
             this.from = paginationData.from
             this.lastPage = paginationData.last_page
             this.lastPageUrl = paginationData.last_page_url
-            this.links = paginationData.links as ILink[]
+            this.links = paginationData.links as IPaginateLink[]
             this.nextPageUrl = paginationData.next_page_url
             this.path = paginationData.path
             this.perPage = paginationData.per_page
@@ -70,30 +68,4 @@ export default class PaginationModel<T> {
             return new model(x)
         })
     }
-
-    // setData<T extends Model>(
-    //     data: T[],
-    //     model: {
-    //         new (data: IIndexable): T
-    //     }
-    // ) {
-    //     const item = data.map((x) => {
-    //         return new model(x)
-    //     })
-    //     console.log(this.data)
-    //     console.log(item)
-    //     this.data = item as T[]
-    //     return this
-    // }
-
-    // setModel<T extends Model>(model: { new (data: IIndexable): T }) {
-    //     PaginationModel<T>.data :T[] = this.data.map((v) => {
-    //         // const data: any = v[1]
-    //         if(v) {
-    //             return new model(v)
-    //         }
-    //     })
-    //
-    //     return this
-    // }
 }

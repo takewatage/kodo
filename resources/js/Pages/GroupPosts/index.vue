@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Head, router } from '@inertiajs/vue3'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
-import SideColumn from '@/Components/SideColumn.vue'
 import CardList from '@/Components/CardList.vue'
 import PostCard from '@/Components/PostCard.vue'
 import { ref } from 'vue'
@@ -13,15 +12,15 @@ import { useLink } from '@/composables/useLink'
 const props = defineProps<{
     posts: PaginationModel<Post>
 }>()
-
 defineOptions({ layout: AuthenticatedLayout })
+const { goLink } = useLink()
 
 const postPaginate = ref(new PaginationModel(props.posts, Post))
-
-const { goLink } = useLink()
 </script>
 
 <template>
+    <Head title="Group Posts" />
+
     <v-container>
         <v-row>
             <v-col

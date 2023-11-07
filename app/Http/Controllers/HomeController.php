@@ -14,13 +14,13 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): \Inertia\Response
     {
 
         $posts = Post::query()
-            ->with(['user', 'group'])
-            ->paginate(5)
-            ->withQueryString();
+        ->with(['user', 'group'])
+        ->paginate(5)
+        ->withQueryString();
 
         return Inertia::render('Home', [
             'posts' => $posts,

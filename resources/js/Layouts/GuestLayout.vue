@@ -1,7 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Head } from '@inertiajs/vue3'
+</script>
 
 <template>
     <v-app id="guestLayout">
+        <Head title="KoDo" />
+
         <Transition
             name="page"
             mode="out-in"
@@ -17,7 +21,7 @@
 <style>
 .page-enter-active,
 .page-leave-active {
-    transition: all 1s ease-out;
+    transition: all 0.5s ease-out;
 }
 
 .page-enter-from,

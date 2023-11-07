@@ -8,6 +8,8 @@ const props = defineProps<{
     status?: string
 }>()
 
+defineOptions({ layout: GuestLayout })
+
 const form = useForm({})
 
 const submit = () => {
@@ -18,51 +20,48 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
 </script>
 
 <template>
-    <GuestLayout>
-        <Head title="Email Verification" />
+    <Head title="Email Verification" />
 
-        <AuthCard>
-            <v-alert
-                v-if="verificationLinkSent"
-                color="success"
-                class="mb-5"
-            >
-                新しい確認リンクが、登録時に指定した電子メール アドレスに送信されました。
-            </v-alert>
-            <p>
-                ご登録いただきありがとうございます!
-                始める前に、リンクをクリックしてメールアドレスを確認してください。<br />
-                メールが届いていない場合は、再送信ボタンから再送信してください。
-            </p>
-            <form @submit.prevent="submit">
-                <div class="mt-4 flex items-center justify-between">
-                    <v-btn
-                        block
-                        type="submit"
-                        class="mb-8"
-                        size="large"
-                        color="blue"
-                        :disabled="form.processing"
-                        :loading="form.processing"
-                    >
-                        再送信
-                    </v-btn>
+    <AuthCard>
+        <v-alert
+            v-if="verificationLinkSent"
+            color="success"
+            class="mb-5"
+        >
+            新しい確認リンクが、登録時に指定した電子メール アドレスに送信されました。
+        </v-alert>
+        <p>
+            ご登録いただきありがとうございます! 始める前に、リンクをクリックしてメールアドレスを確認してください。<br />
+            メールが届いていない場合は、再送信ボタンから再送信してください。
+        </p>
+        <form @submit.prevent="submit">
+            <div class="mt-4 flex items-center justify-between">
+                <v-btn
+                    block
+                    type="submit"
+                    class="mb-8"
+                    size="large"
+                    color="blue"
+                    :disabled="form.processing"
+                    :loading="form.processing"
+                >
+                    再送信
+                </v-btn>
 
-                    <v-btn
-                        variant="outlined"
-                        color="white"
-                        class="mb-8"
-                        size="large"
-                        @click="
-                            () => {
-                                router.post('logout')
-                            }
-                        "
-                    >
-                        ログアウト
-                    </v-btn>
-                </div>
-            </form>
-        </AuthCard>
-    </GuestLayout>
+                <v-btn
+                    variant="outlined"
+                    color="white"
+                    class="mb-8"
+                    size="large"
+                    @click="
+                        () => {
+                            router.post('logout')
+                        }
+                    "
+                >
+                    ログアウト
+                </v-btn>
+            </div>
+        </form>
+    </AuthCard>
 </template>

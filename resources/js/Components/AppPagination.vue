@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ILink } from '@/models/Paginate'
+import { IPaginateLink } from '@/models/Paginate'
 import { useToString } from '@vueuse/core'
+import { ILink } from '@/types'
 
 const emits = defineEmits<{
     (e: 'next', pageNum: number): void
@@ -12,7 +13,7 @@ const emits = defineEmits<{
 const props = withDefaults(
     defineProps<{
         page?: number
-        links: ILink[]
+        links: IPaginateLink[]
     }>(),
     {
         page: 1,
@@ -20,7 +21,6 @@ const props = withDefaults(
 )
 
 const innerPage = ref(props.page)
-console.log(props.links)
 const next = (num: number) => {
     emits('next', num)
 }
@@ -29,13 +29,12 @@ const prev = (num: number) => {
 }
 
 const change = (num: number) => {
-    console.log('change:' + num)
-    console.log(useToString(num).value)
-    const link = props.links.find((x) => {
+    const link: IPaginateLink | undefined = props.links.find((x) => {
         return x.label === useToString(num).value
     })
-    console.log(link)
-    emits('change', link as ILink)
+    if (!link) return
+    const linkObj = { href: link.url }
+    emits('change', linkObj as ILink)
 }
 </script>
 
