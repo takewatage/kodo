@@ -3,6 +3,7 @@
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Post;
 use Illuminate\Foundation\Application;
@@ -31,6 +32,7 @@ Route::redirect('/', '/home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/post', [PostController::class, 'index'])->name('post');
     Route::get('/group-posts', [GroupController::class, 'GroupPosts'])->name('GroupPosts');
 
 });

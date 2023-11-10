@@ -4,6 +4,8 @@ import { usePage, Link } from '@inertiajs/vue3'
 import { ref } from 'vue'
 import { ILink } from '@/types'
 import { useLink } from '@/composables/useLink'
+import AppHeaderMenuIcon from '@/Components/AppHeaderMenuIcon.vue'
+import PostEditDialog from '@/Components/PostEditDialog.vue'
 
 const { headerHeight } = variables
 const page = usePage()
@@ -13,23 +15,9 @@ const props = defineProps<{
     menu: ILink[]
 }>()
 
-const tabValue = ref(route().current())
+const dialog = ref(false)
 
-const items: ILink[] = [
-    {
-        title: 'プロフィール',
-        href: 'profile',
-    },
-    {
-        title: 'ニュース',
-        href: 'news',
-    },
-    {
-        title: 'ログアウト',
-        href: 'logout',
-        method: 'post',
-    },
-]
+const tabValue = ref(route().current())
 </script>
 
 <template>
@@ -53,44 +41,28 @@ const items: ILink[] = [
         >
             <v-tab
                 v-for="link in menu"
-                :key="link.title"
-                :text="link.title"
+                :key="link.title + '_tab'"
+                :text="link.title ?? ''"
                 :value="link.href"
                 @click="goLink(link)"
             ></v-tab>
         </v-tabs>
         <v-spacer></v-spacer>
 
-        <v-menu
-            width="260"
-            transition="scale-transition"
-        >
-            <template #activator="{ props }">
-                <v-btn
-                    icon
-                    v-bind="props"
-                >
-                    <v-avatar
-                        class="hidden-sm-and-down"
-                        color="success"
-                        size="32"
-                    ></v-avatar>
-                </v-btn>
-            </template>
+        <p>pp: {{ dialog }}</p>
 
-            <v-list>
-                <v-list-item
-                    v-for="item in items"
-                    :key="item.title"
-                    class="focus:outline-none"
-                    :title="item.title"
-                    color="primary"
-                    @click="goLink(item)"
-                >
-                </v-list-item>
-            </v-list>
-        </v-menu>
+        <AppHeaderMenuIcon />
+
+        <v-btn
+            color="primary"
+            variant="flat"
+            @click="dialog = true"
+        >
+            投稿
+        </v-btn>
+
+        <PostEditDialog v-model:active="dialog" />
     </v-app-bar>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

@@ -19,6 +19,7 @@ export interface IPost {
 }
 
 export interface ILink {
+    title?: string
     href: string
     method?: string
 }

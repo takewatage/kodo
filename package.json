@@ -36,6 +36,7 @@
         "css-declaration-sorter": "^7.1.1",
         "dayjs": "^1.11.10",
         "postcss": "^8.4.31",
-        "vite-plugin-vuetify": "^1.0.2"
+        "vite-plugin-vuetify": "^1.0.2",
+        "vue3-uuid": "^1.0.0"
     }
 }
