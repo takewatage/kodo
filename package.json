@@ -24,9 +24,9 @@
         "sass": "^1.66.1",
         "typescript": "^4.6",
         "vite": "^4.0.0",
-        "vue": "^3.3.8",
+        "vue": "^3.5.8",
         "vue-tsc": "^1.2.0",
-        "vuetify": "^3.3.15"
+        "vuetify": "^3.7.2"
     },
     "dependencies": {
         "@mdi/font": "^7.2.96",
@@ -35,7 +35,10 @@
         "autoprefixer": "^10.4.16",
         "css-declaration-sorter": "^7.1.1",
         "dayjs": "^1.11.10",
+        "gsap": "^3.12.2",
+        "md-editor-v3": "^4.8.3",
         "postcss": "^8.4.31",
+        "tween24": "^1.5.0",
         "vite-plugin-vuetify": "^1.0.2",
         "vue3-uuid": "^1.0.0"
     }
