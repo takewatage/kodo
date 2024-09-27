@@ -2,12 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Enums\TeamUserRoles;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Carbon;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TeamUser>
  */
-class PostFactory extends Factory
+class TeamUserFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +19,8 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'content' => fake()->text(200),
+            'role' => TeamUserRoles::General,
+            'joined_at' => Carbon::now(),
         ];
     }
 }

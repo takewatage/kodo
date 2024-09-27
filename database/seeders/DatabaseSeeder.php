@@ -15,8 +15,9 @@ class DatabaseSeeder extends Seeder
         if (config('app.env') === 'local') {
             $this->call([
                 UserSeeder::class,
-                GroupSeeder::class,
-                PostSeeder::class,
+                TeamSeeder::class,
+                TeamUserSeeder::class,
+                TeamUserPostSeeder::class,
             ]);
         }
     }

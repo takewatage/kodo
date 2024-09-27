@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -20,7 +19,9 @@ return new class extends Migration
             $table->string('password');
             $table->integer('role')->default(0)->comment('権限');
             $table->text('introduction')->nullable();
-            $table->integer('last_login_group_id')->nullable()->comment('最後にログインしていたgroupID');
+            $table->unsignedBigInteger('last_login_team_id')
+                ->nullable()
+                ->comment('最後にログインしていたteamID');
             $table->rememberToken();
             $table->timestamps();
         });

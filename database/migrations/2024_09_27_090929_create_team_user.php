@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('team_user', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('team_id')->constrained('teams');
             $table->foreignId('user_id')->constrained('users');
-            $table->text('title')->nullable()->comment('タイトル');
-            $table->text('content')->comment('本文');
-            $table->integer('view_auth_type')->default(0)->comment('閲覧権限');
+            $table->string('role')->comment('役割');
+            $table->timestamp('joined_at')->comment('参加日');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('team_user');
     }
 };
