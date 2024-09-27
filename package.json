@@ -29,6 +29,7 @@
         "vuetify": "^3.7.2"
     },
     "dependencies": {
+        "@date-io/dayjs": "^3.0.0",
         "@mdi/font": "^7.2.96",
         "@team-decorate/alcts": "^1.7.0",
         "@vueuse/core": "^10.5.0",
