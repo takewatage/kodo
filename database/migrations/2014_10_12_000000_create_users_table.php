@@ -19,9 +19,7 @@ return new class extends Migration {
             $table->string('password');
             $table->integer('role')->default(0)->comment('権限');
             $table->text('introduction')->nullable();
-            $table->unsignedBigInteger('last_login_team_id')
-                ->nullable()
-                ->comment('最後にログインしていたteamID');
+            $table->unsignedBigInteger('last_login_team_id')->nullable()->comment('最後にログインしていたteamID');
             $table->rememberToken();
             $table->timestamps();
         });

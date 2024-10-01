@@ -7,7 +7,7 @@
         "lint": "eslint --ext .ts,vue --ignore-path .gitignore .",
         "format": "prettier -w resources/js/**/**/**/*.{ts,vue}",
         "fix": "yarn format && yarn lint",
-        "fix:prettier": "prettier --config .prettierrc.yml --ignore-path .prettierignore --cache --cache-location node_modules/.cache/prettier-cache/ --cache-strategy content  --write '**/*.{js,json,html,vue,ts,jsx,tsx,mjs,tjs,cjs}'"
+        "fix:prettier": "prettier --config .prettierrc.yml --ignore-path .prettierignore --cache --cache-location node_modules/.cache/prettier-cache/ --cache-strategy content  --write '**/*.{js,json,html,vue,ts,php}'"
     },
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.0",

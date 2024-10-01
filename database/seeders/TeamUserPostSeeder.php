@@ -19,8 +19,8 @@ class TeamUserPostSeeder extends Seeder
         $users = User::all();
 
         // 現在の日付を基準に前後1週間分のデータを作成
-        $startDate = Carbon::now()->subDays(7);  // 7日前
-        $endDate = Carbon::now()->addDays(7);    // 7日後
+        $startDate = Carbon::now()->subDays(7); // 7日前
+        $endDate = Carbon::now()->addDays(7); // 7日後
 
         collect($users)->each(function ($user) use ($startDate, $endDate) {
             // ユーザーが所属するチームを取得
@@ -32,7 +32,7 @@ class TeamUserPostSeeder extends Seeder
                 collect($userTeams)->each(function ($team) use ($user, $date) {
                     $post = Post::create([
                         'user_id' => $user->id,
-                        'title' => '報告 - ' . $date->format('Y-m-d'),  // タイトルに日付を使う
+                        'title' => '報告 - ' . $date->format('Y-m-d'), // タイトルに日付を使う
                         'content' => 'この日は ' . $date->format('Y-m-d') . ' の報告です。',
                         'created_at' => $date,
                         'updated_at' => $date,

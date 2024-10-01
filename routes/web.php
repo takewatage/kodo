@@ -22,7 +22,6 @@ use Inertia\Inertia;
 */
 
 Route::get('test', function () {
-
     $posts = Post::query()->paginate(5)->withQueryString();
     dump($posts->count());
     dd($posts->toArray());
@@ -34,7 +33,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/post', [PostController::class, 'index'])->name('post');
     Route::get('/group-posts', [GroupController::class, 'GroupPosts'])->name('GroupPosts');
-
 });
 
 Route::middleware('auth')->group(function () {
@@ -43,7 +41,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/news', [NewsController::class, 'list'])->name('news.list');
-
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

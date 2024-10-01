@@ -12,9 +12,9 @@ class TeamSeeder extends Seeder
      */
     public function run(): void
     {
-        collect([1,1])->each(function($x, $i) {
+        collect([1, 1])->each(function ($x, $i) {
             Team::factory()->create([
-                'name' => 'チーム'. $i
+                'name' => 'チーム' . $i,
             ]);
         });
     }
