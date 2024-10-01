@@ -42,7 +42,7 @@ class ProfileController extends Controller
             'status' => '更新しました',
         ]);
 
-//        return Redirect::route('profile.edit');
+        //        return Redirect::route('profile.edit');
     }
 
     /**

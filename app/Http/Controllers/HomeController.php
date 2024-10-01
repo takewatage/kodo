@@ -16,11 +16,10 @@ class HomeController extends Controller
      */
     public function index(): \Inertia\Response
     {
-
         $posts = Post::query()
-        ->with(['user', 'group'])
-        ->paginate(5)
-        ->withQueryString();
+            ->with(['user', 'group'])
+            ->paginate(5)
+            ->withQueryString();
 
         return Inertia::render('Home', [
             'posts' => $posts,

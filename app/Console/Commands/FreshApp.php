@@ -33,7 +33,7 @@ class FreshApp extends Command
 
     public function handle()
     {
-        print("--- start: ".get_class($this)."\n");
+        print '--- start: ' . get_class($this) . "\n";
 
         // キャッシュクリア
         self::sendArtisan('cache:clear');
@@ -41,21 +41,22 @@ class FreshApp extends Command
         self::sendArtisan('route:clear');
         self::sendArtisan('view:clear');
 
-
-        print("--- finish: ".get_class($this)."\n\n");
+        print '--- finish: ' . get_class($this) . "\n\n";
     }
 
-    private function chmod($directory) {
-        $path = exec('pwd')."/{$directory}";
+    private function chmod($directory)
+    {
+        $path = exec('pwd') . "/{$directory}";
 
         exec("sudo chmod -R 777 {$directory}");
 
-        printf ("\e[32m%s: \e[m %s\n", "finish chmod 777", $path);
+        printf("\e[32m%s: \e[m %s\n", 'finish chmod 777', $path);
     }
 
-    private function sendArtisan($cmd) {
+    private function sendArtisan($cmd)
+    {
         Artisan::call($cmd);
 
-        printf ("\e[32m%s: \e[m %s\n", "finish", $cmd);
+        printf("\e[32m%s: \e[m %s\n", 'finish', $cmd);
     }
 }

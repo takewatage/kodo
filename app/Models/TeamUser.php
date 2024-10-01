@@ -10,11 +10,5 @@ class TeamUser extends Model
     use HasFactory;
     protected $table = 'team_user';
 
-    protected $fillable = [
-        'id',
-        'team_id',
-        'user_id',
-        'role',
-        'joined_at',
-    ];
+    protected $fillable = ['id', 'team_id', 'user_id', 'role', 'joined_at'];
 }

@@ -19,13 +19,11 @@ class NewsController extends Controller
      */
     public function list(Request $request): Response
     {
-        $newsList = News::query()
-            ->paginate();
+        $newsList = News::query()->paginate();
 
         return Inertia::render('News/List', [
             'newsList' => $newsList,
             'status' => session('status'),
         ]);
     }
-
 }

@@ -16,12 +16,7 @@ class Post extends Model
     /**
      * @var string[]
      */
-    protected $fillable = [
-        'user_id',
-        'title',
-        'content',
-        'view_auth_type',
-    ];
+    protected $fillable = ['user_id', 'title', 'content', 'view_auth_type'];
 
     public const VIEW_AUTH_TYPE_PUBLIC = 0;
     public const VIEW_AUTH_TYPE_GROUP = 1;
@@ -42,8 +37,8 @@ class Post extends Model
         return $this->belongsToMany(Team::class, 'team_user_post');
     }
 
-
-    public function scopeHomeFilter (Builder $query, Request $request): void {
+    public function scopeHomeFilter(Builder $query, Request $request): void
+    {
         $query->where('');
     }
 }

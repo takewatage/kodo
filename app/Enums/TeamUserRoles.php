@@ -7,7 +7,6 @@ enum TeamUserRoles: string
     case Admin = 'admin'; // 管理者
     case General = 'general'; // 一般
 
-
     public function getLabel(): string
     {
         return match ($this) {
