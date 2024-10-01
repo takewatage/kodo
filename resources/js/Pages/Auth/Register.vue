@@ -34,8 +34,7 @@ const submit = () => {
                     :error-messages="form.errors.name || []"
                     density="compact"
                     variant="outlined"
-                    prepend-inner-icon="mdi-account-outline"
-                ></v-text-field>
+                    prepend-inner-icon="mdi-account-outline"></v-text-field>
             </div>
 
             <div class="mt-4">
@@ -47,8 +46,7 @@ const submit = () => {
                     density="compact"
                     variant="outlined"
                     :error-messages="form.errors.email || []"
-                    prepend-inner-icon="mdi-email-outline"
-                ></v-text-field>
+                    prepend-inner-icon="mdi-email-outline"></v-text-field>
             </div>
 
             <div class="mt-4">
@@ -59,8 +57,7 @@ const submit = () => {
                     :error-messages="form.errors.password || []"
                     density="compact"
                     variant="outlined"
-                    prepend-inner-icon="mdi-lock-outline"
-                ></v-text-field>
+                    prepend-inner-icon="mdi-lock-outline"></v-text-field>
             </div>
 
             <div class="mt-4">
@@ -71,8 +68,7 @@ const submit = () => {
                     :error-messages="form.errors.password_confirmation || []"
                     density="compact"
                     variant="outlined"
-                    prepend-inner-icon="mdi-lock-outline"
-                ></v-text-field>
+                    prepend-inner-icon="mdi-lock-outline"></v-text-field>
             </div>
 
             <v-btn
@@ -83,16 +79,14 @@ const submit = () => {
                 size="large"
                 variant="tonal"
                 :disabled="form.processing"
-                :loading="form.processing"
-            >
+                :loading="form.processing">
                 登録
             </v-btn>
 
             <v-card-text class="text-center px-0">
                 <Link
                     class="text-primary"
-                    :href="route('login')"
-                >
+                    :href="route('login')">
                     アカウントをお持ちの方はログインしてください。 <v-icon icon="mdi-chevron-right"></v-icon>
                 </Link>
             </v-card-text>

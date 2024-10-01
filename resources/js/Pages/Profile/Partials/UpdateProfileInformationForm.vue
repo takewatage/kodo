@@ -39,8 +39,7 @@ const submit = () => {
                     :error-messages="form.errors.name || []"
                     density="compact"
                     variant="outlined"
-                    prepend-inner-icon="mdi-account-outline"
-                ></v-text-field>
+                    prepend-inner-icon="mdi-account-outline"></v-text-field>
             </div>
 
             <div class="mt-3">
@@ -51,8 +50,7 @@ const submit = () => {
                     :error-messages="form.errors.email || []"
                     density="compact"
                     variant="outlined"
-                    prepend-inner-icon="mdi-email-outline"
-                ></v-text-field>
+                    prepend-inner-icon="mdi-email-outline"></v-text-field>
             </div>
 
             <div class="mt-3">
@@ -61,8 +59,7 @@ const submit = () => {
                     label="詳細"
                     :error="form.errors.hasOwnProperty('introduction')"
                     density="compact"
-                    variant="outlined"
-                ></v-textarea>
+                    variant="outlined"></v-textarea>
             </div>
 
             <div v-if="mustVerifyEmail && user.emailVerifiedAt === null">
@@ -72,8 +69,7 @@ const submit = () => {
                         class="text-blue"
                         :href="route('verification.send')"
                         method="post"
-                        as="button"
-                    >
+                        as="button">
                         ここをクリックして確認メールを再送信してください。
                     </Link>
                 </p>
@@ -87,8 +83,7 @@ const submit = () => {
                 variant="tonal"
                 :disabled="form.processing"
                 :loading="form.processing"
-                @click="submit"
-            >
+                @click="submit">
                 更新
             </v-btn>
         </form>

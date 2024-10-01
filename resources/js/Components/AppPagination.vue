@@ -17,7 +17,7 @@ const props = withDefaults(
     }>(),
     {
         page: 1,
-    }
+    },
 )
 
 const innerPage = ref(props.page)
@@ -41,16 +41,14 @@ const change = (num: number) => {
 <template>
     <div
         v-if="props.links.length > 3"
-        class="max-width"
-    >
+        class="max-width">
         <v-pagination
             v-model="innerPage"
             class="my-4"
             :length="props.links.length - 2"
             @next="next"
             @prev="prev"
-            @update:model-value="change"
-        >
+            @update:model-value="change">
         </v-pagination>
     </div>
 </template>

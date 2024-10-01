@@ -9,8 +9,7 @@ import { Head } from '@inertiajs/vue3'
         <Transition
             name="page"
             mode="out-in"
-            appear
-        >
+            appear>
             <v-main :key="$page.url">
                 <slot />
             </v-main>

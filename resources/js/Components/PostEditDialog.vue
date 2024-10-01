@@ -20,19 +20,16 @@ const form = useForm({
         :model-value="active"
         :scrim="false"
         :fullscreen="true"
-        transition="dialog-bottom-transition"
-    >
+        transition="dialog-bottom-transition">
         <v-card>
             <v-toolbar
                 height="64"
                 dark
-                color="primary"
-            >
+                color="primary">
                 <v-btn
                     icon
                     dark
-                    @click="$emit('update:active', false)"
-                >
+                    @click="$emit('update:active', false)">
                     <v-icon>mdi-close</v-icon>
                 </v-btn>
                 <v-toolbar-title>今日のKoDoを投稿しよう</v-toolbar-title>
@@ -40,8 +37,7 @@ const form = useForm({
                 <v-toolbar-items>
                     <v-btn
                         variant="text"
-                        @click="$emit('update:active', false)"
-                    >
+                        @click="$emit('update:active', false)">
                         投稿
                     </v-btn>
                 </v-toolbar-items>
@@ -54,13 +50,11 @@ const form = useForm({
                     class="label-bold"
                     :error="form.errors.hasOwnProperty('title')"
                     density="compact"
-                    variant="outlined"
-                />
+                    variant="outlined" />
 
                 <AppEditor
                     v-model="form.content"
-                    label="本文"
-                />
+                    label="本文" />
             </v-container>
         </v-card>
     </v-dialog>

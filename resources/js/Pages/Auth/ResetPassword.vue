@@ -41,8 +41,7 @@ const submit = () => {
                     density="compact"
                     placeholder="example.com"
                     prepend-inner-icon="mdi-email-outline"
-                    variant="outlined"
-                ></v-text-field>
+                    variant="outlined"></v-text-field>
             </div>
 
             <div class="mt-4">
@@ -53,8 +52,7 @@ const submit = () => {
                     :error-messages="form.errors.password || []"
                     density="compact"
                     variant="outlined"
-                    prepend-inner-icon="mdi-lock-outline"
-                ></v-text-field>
+                    prepend-inner-icon="mdi-lock-outline"></v-text-field>
             </div>
 
             <div class="mt-4">
@@ -65,8 +63,7 @@ const submit = () => {
                     :error-messages="form.errors.password_confirmation || []"
                     density="compact"
                     variant="outlined"
-                    prepend-inner-icon="mdi-lock-outline"
-                ></v-text-field>
+                    prepend-inner-icon="mdi-lock-outline"></v-text-field>
             </div>
 
             <div class="flex items-center justify-end mt-4">
@@ -78,8 +75,7 @@ const submit = () => {
                     size="large"
                     variant="tonal"
                     :disabled="form.processing"
-                    :loading="form.processing"
-                >
+                    :loading="form.processing">
                     パスワードリセット
                 </v-btn>
             </div>

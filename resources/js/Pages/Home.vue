@@ -26,13 +26,11 @@ const { goLink } = useLink()
         <v-row>
             <v-col
                 cols="12"
-                md
-            >
+                md>
                 <CardList>
                     <template
                         v-for="post in postPaginate.data"
-                        :key="post.id"
-                    >
+                        :key="post.id">
                         <PostCard :post="post" />
                     </template>
                 </CardList>
@@ -41,7 +39,6 @@ const { goLink } = useLink()
         <AppPagination
             :page="postPaginate.currentPage"
             :links="postPaginate.links"
-            @change="(link) => goLink(link)"
-        />
+            @change="(link) => goLink(link)" />
     </v-container>
 </template>

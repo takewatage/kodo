@@ -23,18 +23,15 @@ const items: ILink[] = [
 <template>
     <v-menu
         width="260"
-        transition="scale-transition"
-    >
+        transition="scale-transition">
         <template #activator="{ props }">
             <v-btn
                 icon
-                v-bind="props"
-            >
+                v-bind="props">
                 <v-avatar
                     class="hidden-sm-and-down"
                     color="success"
-                    size="32"
-                ></v-avatar>
+                    size="32"></v-avatar>
             </v-btn>
         </template>
 
@@ -45,8 +42,7 @@ const items: ILink[] = [
                 class="focus:outline-none"
                 :title="item.title ?? ''"
                 color="primary"
-                @click="goLink(item)"
-            >
+                @click="goLink(item)">
             </v-list-item>
         </v-list>
     </v-menu>

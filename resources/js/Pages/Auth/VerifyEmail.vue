@@ -26,8 +26,7 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
         <v-alert
             v-if="verificationLinkSent"
             color="success"
-            class="mb-5"
-        >
+            class="mb-5">
             新しい確認リンクが、登録時に指定した電子メール アドレスに送信されました。
         </v-alert>
         <p>
@@ -43,8 +42,7 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
                     size="large"
                     color="blue"
                     :disabled="form.processing"
-                    :loading="form.processing"
-                >
+                    :loading="form.processing">
                     再送信
                 </v-btn>
 
@@ -57,8 +55,7 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
                         () => {
                             router.post('logout')
                         }
-                    "
-                >
+                    ">
                     ログアウト
                 </v-btn>
             </div>

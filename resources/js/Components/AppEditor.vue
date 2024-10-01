@@ -33,8 +33,7 @@ const onBlur = (func: Function) => {
         variant="outlined"
         :active="fieldActive"
         class="editor-field label-bold"
-        label="label"
-    >
+        label="label">
         <template #default="{ isActive, isFocused, focus, blur }">
             <MdEditor
                 :editor-id="htmlId"
@@ -46,8 +45,7 @@ const onBlur = (func: Function) => {
                 :footers="[]"
                 @onChange="(v: string) => $emit('update:modelValue', v)"
                 @focus="onFocus(focus)"
-                @blur="onBlur(blur)"
-            />
+                @blur="onBlur(blur)" />
         </template>
     </VField>
 </template>

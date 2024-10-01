@@ -25,8 +25,7 @@ const submit = () => {
         <v-alert
             v-if="status"
             color="success"
-            class="mb-5"
-        >
+            class="mb-5">
             {{ status }}
         </v-alert>
 
@@ -42,8 +41,7 @@ const submit = () => {
                     density="compact"
                     placeholder="example.com"
                     prepend-inner-icon="mdi-email-outline"
-                    variant="outlined"
-                ></v-text-field>
+                    variant="outlined"></v-text-field>
             </div>
 
             <div class="mt-2">
@@ -55,8 +53,7 @@ const submit = () => {
                     size="large"
                     variant="tonal"
                     :disabled="form.processing"
-                    :loading="form.processing"
-                >
+                    :loading="form.processing">
                     パスワードリセットリンク送信
                 </v-btn>
             </div>

@@ -23,8 +23,7 @@ const tabValue = ref(route().current())
 <template>
     <v-app-bar
         class="px-3"
-        :height="headerHeight"
-    >
+        :height="headerHeight">
         <Link href="/">
             <h3 class="font-weight-bold">
                 {{ page.props.appName }}
@@ -37,15 +36,13 @@ const tabValue = ref(route().current())
             class="mt-auto"
             centered
             color="primary"
-            v-model="tabValue"
-        >
+            v-model="tabValue">
             <v-tab
                 v-for="link in menu"
                 :key="link.title + '_tab'"
                 :text="link.title ?? ''"
                 :value="link.href"
-                @click="goLink(link)"
-            ></v-tab>
+                @click="goLink(link)"></v-tab>
         </v-tabs>
         <v-spacer></v-spacer>
 
@@ -56,8 +53,7 @@ const tabValue = ref(route().current())
         <v-btn
             color="primary"
             variant="flat"
-            @click="dialog = true"
-        >
+            @click="dialog = true">
             投稿
         </v-btn>
 

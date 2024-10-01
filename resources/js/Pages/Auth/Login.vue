@@ -37,8 +37,7 @@ const submit = () => {
         <form @submit.prevent="submit">
             <InputError
                 class="mt-2 mb-4"
-                :message="form.errors.email"
-            />
+                :message="form.errors.email" />
 
             <v-text-field
                 v-model="form.email"
@@ -47,15 +46,13 @@ const submit = () => {
                 density="compact"
                 placeholder="Email address"
                 prepend-inner-icon="mdi-email-outline"
-                variant="outlined"
-            ></v-text-field>
+                variant="outlined"></v-text-field>
 
             <div class="text-subtitle-1 text-medium-emphasis d-flex align-center justify-space-between">
                 <Link
                     v-if="canResetPassword"
                     class="text-caption text-primary ml-auto"
-                    :href="route('password.request')"
-                >
+                    :href="route('password.request')">
                     パスワードを忘れた場合はこちら
                 </Link>
             </div>
@@ -70,8 +67,7 @@ const submit = () => {
                 variant="outlined"
                 label="Password"
                 :error="form.errors.hasOwnProperty('email')"
-                @click:append-inner="visible = !visible"
-            ></v-text-field>
+                @click:append-inner="visible = !visible"></v-text-field>
             <v-btn
                 type="submit"
                 block
@@ -80,16 +76,14 @@ const submit = () => {
                 size="large"
                 variant="tonal"
                 :disabled="form.processing"
-                :loading="form.processing"
-            >
+                :loading="form.processing">
                 ログイン
             </v-btn>
 
             <v-card-text class="text-center">
                 <Link
                     class="text-primary"
-                    :href="route('register')"
-                >
+                    :href="route('register')">
                     アカウントをお持ちでない場合は登録 <v-icon icon="mdi-chevron-right"></v-icon>
                 </Link>
             </v-card-text>

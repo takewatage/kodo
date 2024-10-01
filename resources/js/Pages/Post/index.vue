@@ -19,8 +19,7 @@ defineOptions({ layout: AuthenticatedLayout })
         <v-row>
             <v-col
                 cols="12"
-                md
-            >
+                md>
                 <h2>投稿</h2>
             </v-col>
         </v-row>

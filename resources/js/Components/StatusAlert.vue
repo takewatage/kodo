@@ -18,15 +18,14 @@ watch(
             default:
                 text.value = props.status
         }
-    }
+    },
 )
 </script>
 
 <template>
     <v-alert
         v-if="text"
-        color="success"
-    >
+        color="success">
         {{ text }}
     </v-alert>
 </template>

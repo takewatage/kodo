@@ -19,8 +19,7 @@ const list = [
         <Head title="HOME">
             <meta
                 name="description"
-                content="KoDo"
-            />
+                content="KoDo" />
         </Head>
 
         <AppHeader :menu="list" />
@@ -29,8 +28,7 @@ const list = [
             <Transition
                 name="page"
                 mode="out-in"
-                appear
-            >
+                appear>
                 <div :key="$page.url">
                     <slot />
                 </div>

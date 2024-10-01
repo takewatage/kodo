@@ -40,7 +40,7 @@ export default class PaginationModel<T> {
         data?: any,
         model?: {
             new (data: IIndexable): T
-        }
+        },
     ) {
         if (data) {
             const paginationData = data as PaginationData<T>

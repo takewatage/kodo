@@ -5,20 +5,18 @@ const props = withDefaults(
     }>(),
     {
         width: 350,
-    }
+    },
 )
 </script>
 
 <template>
     <v-col
         class="side-col d-none d-lg-block"
-        cols="auto"
-    >
+        cols="auto">
         <v-sheet
             rounded="lg"
             :width="props.width"
-            class="pa-2 side-column"
-        >
+            class="pa-2 side-column">
             <slot />
         </v-sheet>
     </v-col>

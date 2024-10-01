@@ -30,8 +30,7 @@ fetchAuth()
                 height="200"
                 src="https://cdn.vuetifyjs.com/docs/images/cards/purple-flowers.jpg"
                 cover
-                class="text-white"
-            >
+                class="text-white">
             </v-img>
         </v-card>
         <div class="v-row mt-1">
@@ -52,8 +51,7 @@ fetchAuth()
                 <div class="text-center top-spacer">
                     <v-avatar
                         size="100"
-                        color="primary"
-                    >
+                        color="primary">
                     </v-avatar>
                     <h5 class="text-h5 mt-3">{{ authUser.name }}</h5>
                 </div>
@@ -65,8 +63,7 @@ fetchAuth()
         <v-row class="mt-4">
             <v-col
                 md="4"
-                cols="12"
-            >
+                cols="12">
                 <v-card min-height="450">
                     <v-card-text>
                         {{ authUser.introduction }}
@@ -75,14 +72,12 @@ fetchAuth()
             </v-col>
             <v-col
                 md="8"
-                cols="12"
-            >
+                cols="12">
                 <v-card min-height="450">
                     <v-card-item>
                         <UpdateProfileInformationForm
                             :must-verify-email="mustVerifyEmail"
-                            @on-success="fetchAuth"
-                        />
+                            @on-success="fetchAuth" />
                     </v-card-item>
                 </v-card>
             </v-col>
