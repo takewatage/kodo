@@ -15,7 +15,7 @@ defineProps<{
                 <Link
                     href="#"
                     class="text-white">
-                    <p class="text-red-darken-1">{{ post.user.urlName }}</p>
+                    <p>{{ post.user.urlName }}</p>
                 </Link>
                 <span>{{ post.createdAtDisplay }}</span>
             </div>

@@ -1,15 +1,16 @@
-up-m1:
-	docker-compose -f docker-compose.yml -f docker-compose.dev.yml -f docker-compose.m1.yml up -d
+
 up:
-	docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+	./vendor/bin/sail up -d
 down:
-	- docker-compose stop
-	- docker-compose down
+	./vendor/bin/sail down
 stop:
 	- docker-compose stop
 connect:
 	docker exec -it wsg-app bash
 docker-cache-clear:
 	docker builder prune
-up-st:
-	docker-compose -f docker-compose.st.yml -f docker-compose.dev.yml up -d
+clean:
+    - ./vendor/bin/sail artisan config:clear
+    - ./vendor/bin/sail artisan route:clear
+    - ./vendor/bin/sail artisan view:clear
+    - ./vendor/bin/sail artisan optimize:clear

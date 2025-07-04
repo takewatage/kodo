@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import GuestLayout from '@/Layouts/GuestLayout.vue'
-import InputError from '@/Components/InputError.vue'
+import GuestLayout from '@/layouts/GuestLayout.vue'
+import InputError from '@/components/InputError.vue'
 import { Head, Link, useForm, usePage } from '@inertiajs/vue3'
 import { ref } from 'vue'
-import AuthCard from '@/Components/Auth/AuthCard.vue'
+import AuthCard from '@/components/Auth/AuthCard.vue'
 
 defineProps<{
     canResetPassword?: boolean
@@ -84,7 +84,8 @@ const submit = () => {
                 <Link
                     class="text-primary"
                     :href="route('register')">
-                    アカウントをお持ちでない場合は登録 <v-icon icon="mdi-chevron-right"></v-icon>
+                    アカウントをお持ちでない場合は登録
+                    <v-icon icon="mdi-chevron-right"></v-icon>
                 </Link>
             </v-card-text>
         </form>

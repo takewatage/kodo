@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import variables from '../../sass/variables.module.scss'
+import variables from '../../../sass/variables.module.scss'
 import { usePage, Link } from '@inertiajs/vue3'
 import { ref } from 'vue'
 import { ILink } from '@/types'
 import { useLink } from '@/composables/useLink'
-import AppHeaderMenuIcon from '@/Components/AppHeaderMenuIcon.vue'
-import PostEditDialog from '@/Components/PostEditDialog.vue'
+import AppHeaderMenuIcon from '@/components/Layout/AppHeaderMenuIcon.vue'
+import PostEditDialog from '@/components/PostEditDialog.vue'
 
 const { headerHeight } = variables
 const page = usePage()
@@ -45,8 +45,6 @@ const tabValue = ref(route().current())
                 @click="goLink(link)"></v-tab>
         </v-tabs>
         <v-spacer></v-spacer>
-
-        <p>pp: {{ dialog }}</p>
 
         <AppHeaderMenuIcon />
 

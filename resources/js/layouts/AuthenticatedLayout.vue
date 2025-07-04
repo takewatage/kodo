@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppHeader from '@/Components/AppHeader.vue'
+import AppHeader from '@/components/Layout/AppHeader.vue'
 import { Head } from '@inertiajs/vue3'
 
 const list = [

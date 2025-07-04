@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { Head, router } from '@inertiajs/vue3'
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
-import CardList from '@/Components/CardList.vue'
-import PostCard from '@/Components/PostCard.vue'
+import AuthenticatedLayout from '@/layouts/AuthenticatedLayout.vue'
+import CardList from '@/components/CardList.vue'
+import PostCard from '@/components/PostCard.vue'
 import { ref } from 'vue'
 import Post from '@/models/Post'
 import PaginationModel from '@/models/Paginate'
-import AppPagination from '@/Components/AppPagination.vue'
+import AppPagination from '@/components/AppPagination.vue'
 import { useLink } from '@/composables/useLink'
 
 const props = defineProps<{

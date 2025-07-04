@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import AppEditor from '@/Components/AppEditor.vue'
+import AppEditor from '@/components/AppEditor.vue'
 import { useForm } from '@inertiajs/vue3'
 
-const props = defineProps<{
+defineProps<{
     active: boolean
 }>()
-const emit = defineEmits<{
+defineEmits<{
     'update:active': [val: boolean]
 }>()
 

@@ -1,13 +1,6 @@
 <script setup lang="ts">
-import { Head, router } from '@inertiajs/vue3'
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
-import CardList from '@/Components/CardList.vue'
-import PostCard from '@/Components/PostCard.vue'
-import { ref } from 'vue'
-import Post from '@/models/Post'
-import PaginationModel from '@/models/Paginate'
-import AppPagination from '@/Components/AppPagination.vue'
-import { useLink } from '@/composables/useLink'
+import { Head } from '@inertiajs/vue3'
+import AuthenticatedLayout from '@/layouts/AuthenticatedLayout.vue'
 
 defineOptions({ layout: AuthenticatedLayout })
 </script>

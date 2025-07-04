@@ -18,15 +18,6 @@ class Post extends Model
      */
     protected $fillable = ['user_id', 'title', 'content', 'view_auth_type'];
 
-    public const VIEW_AUTH_TYPE_PUBLIC = 0;
-    public const VIEW_AUTH_TYPE_GROUP = 1;
-    public const VIEW_AUTH_TYPE_PRIVATE = 2;
-    public const VIEW_AUTH_TYPE_LIST = [
-        self::VIEW_AUTH_TYPE_PUBLIC => 'パブリック',
-        self::VIEW_AUTH_TYPE_GROUP => 'グループのみ',
-        self::VIEW_AUTH_TYPE_PRIVATE => 'プライベート',
-    ];
-
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -37,8 +28,26 @@ class Post extends Model
         return $this->belongsToMany(Team::class, 'team_user_post');
     }
 
-    public function scopeHomeFilter(Builder $query, Request $request): void
+    public function scopeFilter($query, array $filters): void
     {
-        $query->where('');
+        $query
+            ->when($filters['search'] ?? null, function ($query, $search) {
+                $query->where(function ($query) use ($search) {
+                    $query
+                        ->where('first_name', 'like', '%' . $search . '%')
+                        ->orWhere('last_name', 'like', '%' . $search . '%')
+                        ->orWhere('email', 'like', '%' . $search . '%');
+                });
+            })
+            ->when($filters['role'] ?? null, function ($query, $role) {
+                $query->whereRole($role);
+            })
+            ->when($filters['trashed'] ?? null, function ($query, $trashed) {
+                if ($trashed === 'with') {
+                    $query->withTrashed();
+                } elseif ($trashed === 'only') {
+                    $query->onlyTrashed();
+                }
+            });
     }
 }

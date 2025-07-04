@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import GuestLayout from '@/Layouts/GuestLayout.vue'
+import GuestLayout from '@/layouts/GuestLayout.vue'
 import { Head, Link, useForm } from '@inertiajs/vue3'
-import AuthCard from '@/Components/Auth/AuthCard.vue'
+import AuthCard from '@/components/Auth/AuthCard.vue'
 
 defineOptions({ layout: GuestLayout })
 
@@ -87,7 +87,8 @@ const submit = () => {
                 <Link
                     class="text-primary"
                     :href="route('login')">
-                    アカウントをお持ちの方はログインしてください。 <v-icon icon="mdi-chevron-right"></v-icon>
+                    アカウントをお持ちの方はログインしてください。
+                    <v-icon icon="mdi-chevron-right"></v-icon>
                 </Link>
             </v-card-text>
         </form>

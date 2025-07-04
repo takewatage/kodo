@@ -34,3 +34,13 @@ yarn fix
 * perf: パフォーマンス向上関連
 * test: テスト関連
 * chore: ビルド、補助ツール、ライブラリ関連
+
+
+### ディレクトリ
+
+```
+└── js
+    ├── composables: Vueのロジック、定義を格納
+    ├── utils:       汎用的なユーティリティ関数を定義
+    └── types:       typescriptの型定義
+```

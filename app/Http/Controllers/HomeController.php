@@ -3,22 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreGroupRequest;
-use App\Http\Requests\UpdateGroupRequest;
-use App\Models\Group;
 use App\Models\Post;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): \Inertia\Response
+    public function index(): Response
     {
         $posts = Post::query()
-            ->with(['user', 'group'])
-            ->paginate(5)
+            ->with(['user'])
+            ->paginate(15)
             ->withQueryString();
 
         return Inertia::render('Home', [
@@ -38,38 +37,6 @@ class HomeController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreGroupRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Group $group)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Group $group)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateGroupRequest $request, Group $group)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Group $group)
     {
         //
     }

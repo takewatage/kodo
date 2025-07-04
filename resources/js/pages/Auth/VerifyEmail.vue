@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import GuestLayout from '@/Layouts/GuestLayout.vue'
+import GuestLayout from '@/layouts/GuestLayout.vue'
 import { Head, router, useForm } from '@inertiajs/vue3'
-import AuthCard from '@/Components/Auth/AuthCard.vue'
+import AuthCard from '@/components/Auth/AuthCard.vue'
 
 const props = defineProps<{
     status?: string
@@ -30,7 +30,8 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
             新しい確認リンクが、登録時に指定した電子メール アドレスに送信されました。
         </v-alert>
         <p>
-            ご登録いただきありがとうございます! 始める前に、リンクをクリックしてメールアドレスを確認してください。<br />
+            ご登録いただきありがとうございます! 始める前に、リンクをクリックしてメールアドレスを確認してください。
+            <br />
             メールが届いていない場合は、再送信ボタンから再送信してください。
         </p>
         <form @submit.prevent="submit">

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { Head, usePage } from '@inertiajs/vue3'
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
-import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfileInformationForm.vue'
+import AuthenticatedLayout from '@/layouts/AuthenticatedLayout.vue'
+import UpdateProfileInformationForm from '@/pages/Profile/Partials/UpdateProfileInformationForm.vue'
 import User from '@/models/User'
-import StatusAlert from '@/Components/StatusAlert.vue'
+import StatusAlert from '@/components/StatusAlert.vue'
 import { ref } from 'vue'
 
 defineProps<{
@@ -30,8 +30,7 @@ fetchAuth()
                 height="200"
                 src="https://cdn.vuetifyjs.com/docs/images/cards/purple-flowers.jpg"
                 cover
-                class="text-white">
-            </v-img>
+                class="text-white"></v-img>
         </v-card>
         <div class="v-row mt-1">
             <div class="v-col-sm-12 v-col-lg-4 v-col-12 order-sm-second">
@@ -51,8 +50,7 @@ fetchAuth()
                 <div class="text-center top-spacer">
                     <v-avatar
                         size="100"
-                        color="primary">
-                    </v-avatar>
+                        color="primary"></v-avatar>
                     <h5 class="text-h5 mt-3">{{ authUser.name }}</h5>
                 </div>
             </div>

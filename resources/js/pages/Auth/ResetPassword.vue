@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import GuestLayout from '@/Layouts/GuestLayout.vue'
+import GuestLayout from '@/layouts/GuestLayout.vue'
 import { Head, useForm } from '@inertiajs/vue3'
-import AuthCard from '@/Components/Auth/AuthCard.vue'
+import AuthCard from '@/components/Auth/AuthCard.vue'
 
 const props = defineProps<{
     email: string
