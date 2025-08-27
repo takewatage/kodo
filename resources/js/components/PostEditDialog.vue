@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import AppEditor from '@/components/AppEditor.vue'
 import { useForm } from '@inertiajs/vue3'
 
 defineProps<{
@@ -51,10 +50,6 @@ const form = useForm({
                     :error="form.errors.hasOwnProperty('title')"
                     density="compact"
                     variant="outlined" />
-
-                <AppEditor
-                    v-model="form.content"
-                    label="本文" />
             </v-container>
         </v-card>
     </v-dialog>

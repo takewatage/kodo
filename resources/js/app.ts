@@ -7,8 +7,8 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m'
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 import '../sass/app.scss'
+import { vuetify } from '@/plugins/vuetfly'
 import GuestLayout from '../../vendor/laravel/breeze/stubs/inertia-vue-ts/resources/js/Layouts/GuestLayout.vue'
-import { vuetify } from '@/utils/vuetfly'
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel'
 

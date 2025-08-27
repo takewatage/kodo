@@ -27,10 +27,6 @@ export default defineConfig({
                 },
             },
         }),
-        vuetify({
-            autoImport: true,
-            styles: { configFile: 'resources/sass/settings.scss' },
-            treeShake: true,
-        }),
+        vuetify({ autoImport: true }),
     ],
 })

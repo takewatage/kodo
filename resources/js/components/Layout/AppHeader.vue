@@ -2,18 +2,11 @@
 import variables from '../../../sass/variables.module.scss'
 import { usePage, Link } from '@inertiajs/vue3'
 import { ref } from 'vue'
-import { ILink } from '@/types'
-import { useLink } from '@/composables/useLink'
-import AppHeaderMenuIcon from '@/components/Layout/AppHeaderMenuIcon.vue'
+import AppHeaderMenuIcon from '@/components/layout/AppHeaderMenuIcon.vue'
 import PostEditDialog from '@/components/PostEditDialog.vue'
 
 const { headerHeight } = variables
 const page = usePage()
-const { goLink } = useLink()
-
-const props = defineProps<{
-    menu: ILink[]
-}>()
 
 const dialog = ref(false)
 
@@ -33,16 +26,15 @@ const tabValue = ref(route().current())
         <v-spacer></v-spacer>
 
         <v-tabs
+            v-model="tabValue"
             class="mt-auto"
             centered
-            color="primary"
-            v-model="tabValue">
+            color="primary">
             <v-tab
                 v-for="link in menu"
                 :key="link.title + '_tab'"
                 :text="link.title ?? ''"
-                :value="link.href"
-                @click="goLink(link)"></v-tab>
+                :value="link.href"></v-tab>
         </v-tabs>
         <v-spacer></v-spacer>
 

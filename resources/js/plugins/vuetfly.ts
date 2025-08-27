@@ -1,16 +1,17 @@
 import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
-import Ja from 'dayjs/locale/ja'
 export const vuetify = createVuetify({
+    components,
+    directives,
     theme: {
-        defaultTheme: 'dark',
         themes: {
-            dark: {
+            light: {
                 colors: {
-                    primary: '#dbc5a4',
-                    secondary: '#e7d9ba',
-                    neutral: '#d1bbaf',
-                    white: '#ffffff',
+                    dokBackground: '#ffffff',
+                    dokPrimary: '#ff45ce',
+                    dokSecondary: 'rgba(255,69,206,0.52)',
                 },
             },
         },
@@ -31,16 +32,6 @@ export const vuetify = createVuetify({
             lg: 768,
             xl: 1080,
             xxl: 1280,
-        },
-    },
-    date: {
-        locale: {
-            ja: Ja,
-        },
-        formats: {
-            year: 'YYYY年',
-            monthAndYear: 'YYYY年M月',
-            normalDateWithWeekday: 'M月D日(dd)',
         },
     },
 })

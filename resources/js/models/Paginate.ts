@@ -5,8 +5,10 @@ export interface IPaginateLink {
     label: string
     url?: string
 }
+// eslint-disable-next-line
 interface PaginationData<T> {
     current_page: number
+    // eslint-disable-next-line
     data?: any[]
     first_page_url: string
     from: number
@@ -37,6 +39,7 @@ export default class PaginationModel<T> {
     total = 0
 
     constructor(
+        // eslint-disable-next-line
         data?: any,
         model?: {
             new (data: IIndexable): T
@@ -63,7 +66,9 @@ export default class PaginationModel<T> {
         }
     }
 
+    // eslint-disable-next-line
     setModel(data: any, model: { new (data: IIndexable): T }) {
+        // eslint-disable-next-line
         return data.map((x: any) => {
             return new model(x)
         })

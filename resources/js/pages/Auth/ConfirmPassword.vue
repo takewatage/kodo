@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import GuestLayout from '@/layouts/GuestLayout.vue'
-import { Head, useForm } from '@inertiajs/vue3'
+import { Head } from '@inertiajs/vue3'
 
 defineOptions({ layout: GuestLayout })
 
-const form = useForm({
-    password: '',
-})
+// const form = useForm({
+//     password: '',
+// })
 
-const submit = () => {
-    form.post(route('password.confirm'), {
-        onFinish: () => {
-            form.reset()
-        },
-    })
-}
+// const submit = () => {
+//     form.post(route('password.confirm'), {
+//         onFinish: () => {
+//             form.reset()
+//         },
+//     })
+// }
 </script>
 
 <template>

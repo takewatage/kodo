@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { useLink } from '@/composables/useLink'
 import { ILink } from '@/types'
+import { router } from '@inertiajs/vue3'
 
-const { goLink } = useLink()
 const items: ILink[] = [
     {
         title: 'プロフィール',
@@ -42,8 +41,7 @@ const items: ILink[] = [
                 class="focus:outline-none"
                 :title="item.title ?? ''"
                 color="primary"
-                @click="goLink(item)">
-            </v-list-item>
+                @click="router.get(item)"></v-list-item>
         </v-list>
     </v-menu>
 </template>

@@ -2,16 +2,7 @@
 import AppHeader from '@/components/Layout/AppHeader.vue'
 import { Head } from '@inertiajs/vue3'
 
-const list = [
-    {
-        title: 'ホーム',
-        href: 'home',
-    },
-    {
-        title: 'メンバーの投稿',
-        href: 'group-posts',
-    },
-]
+
 </script>
 
 <template>

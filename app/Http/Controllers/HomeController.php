@@ -15,14 +15,7 @@ class HomeController extends Controller
      */
     public function index(): Response
     {
-        $posts = Post::query()
-            ->with(['user'])
-            ->paginate(15)
-            ->withQueryString();
-
-        return Inertia::render('Home', [
-            'posts' => $posts,
-        ]);
+        return Inertia::render('Home');
     }
 
     /**
