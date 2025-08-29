@@ -9,6 +9,7 @@ import 'vuetify/styles'
 import '../sass/app.scss'
 import { vuetify } from '@/plugins/vuetfly'
 import GuestLayout from '../../vendor/laravel/breeze/stubs/inertia-vue-ts/resources/js/Layouts/GuestLayout.vue'
+import { setupDialogPlugin } from '@/composables/common/useDialogService'
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel'
 
@@ -25,7 +26,14 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         const app = createApp({ render: () => h(App, props) })
         app.config.globalProperties.route = route
-        app.use(plugin).use(ZiggyVue, Ziggy).use(vuetify).mount(el)
+        // プラグインの設定
+        app.use(plugin)
+        app.use(ZiggyVue, Ziggy)
+        app.use(vuetify)
+
+        // ダイアログプラグインのセットアップ
+        setupDialogPlugin(app, vuetify)
+        app.mount(el)
     },
     progress: {
         color: '#4B5563',
