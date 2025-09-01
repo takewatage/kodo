@@ -9,9 +9,13 @@ import { useInputRefs } from '@/composables/dok/useInputRefs'
 import CalculatorDialog from '@/components/Dok/CalculatorDialog.vue'
 import { ButtonOption } from '@/types/dok'
 import MultiButtons from '@/components/Dok/MultiButtons.vue'
+import SamePriceImg from '@/components/Dok/SamePriceImg.vue'
+import { useOverlayService } from '@/composables/common/useOverlayService'
 
 defineOptions({ layout: DokLayout })
 const { getLayoutItem } = useLayout()
+const overlay = useOverlayService()
+
 const el = useTemplateRef<HTMLElement>('el')
 const size = reactive(useElementSize(el, { width: 0, height: 0 }, { box: 'border-box' }))
 const theme = useTheme()
@@ -73,7 +77,9 @@ const handleCalc = () => {
         }
         isFocusRock.value = true
         if (resultProduct.value == 'same') {
-            alert('どっちもお得カネ')
+            overlay.open({
+                component: SamePriceImg,
+            })
         }
     })
 }

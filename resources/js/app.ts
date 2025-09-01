@@ -10,6 +10,7 @@ import '../sass/app.scss'
 import { vuetify } from '@/plugins/vuetfly'
 import GuestLayout from '../../vendor/laravel/breeze/stubs/inertia-vue-ts/resources/js/Layouts/GuestLayout.vue'
 import { setupDialogPlugin } from '@/composables/common/useDialogService'
+import { setupOverlayPlugin } from '@/composables/common/useOverlayService'
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel'
 
@@ -33,6 +34,7 @@ createInertiaApp({
 
         // ダイアログプラグインのセットアップ
         setupDialogPlugin(app, vuetify)
+        setupOverlayPlugin(app, vuetify)
         app.mount(el)
     },
     progress: {
