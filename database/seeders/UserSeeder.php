@@ -15,6 +15,5 @@ class UserSeeder extends Seeder
             'name' => 'テスト 太郎',
             'email' => 'test@test.com',
         ]);
-        \App\Models\User::factory(10)->create();
     }
 }

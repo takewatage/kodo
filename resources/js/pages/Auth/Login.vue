@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import GuestLayout from '@/layouts/GuestLayout.vue'
 import InputError from '@/components/InputError.vue'
-import { Head, Link, useForm, usePage } from '@inertiajs/vue3'
+import { Head, useForm, usePage } from '@inertiajs/vue3'
 import { ref } from 'vue'
 import AuthCard from '@/components/Auth/AuthCard.vue'
 
@@ -19,6 +19,7 @@ const appName: string = page.props.appName
 const form = useForm({
     email: '',
     password: '',
+    family_code: '',
 })
 
 const submit = () => {
@@ -37,25 +38,34 @@ const submit = () => {
         <form @submit.prevent="submit">
             <InputError
                 class="mt-2 mb-4"
-                :message="form.errors.email" />
+                :message="form.errors.email || form.errors.password || form.errors.family_code" />
 
             <v-text-field
                 v-model="form.email"
-                label="Account"
+                label="アカウント"
                 :error="form.errors.hasOwnProperty('email')"
                 density="compact"
-                placeholder="Email address"
+                placeholder="メールアドレス"
                 prepend-inner-icon="mdi-email-outline"
                 variant="outlined"></v-text-field>
 
-            <div class="text-subtitle-1 text-medium-emphasis d-flex align-center justify-space-between">
-                <Link
-                    v-if="canResetPassword"
-                    class="text-caption text-primary ml-auto"
-                    :href="route('password.request')">
-                    パスワードを忘れた場合はこちら
-                </Link>
-            </div>
+            <v-text-field
+                v-model="form.family_code"
+                density="compact"
+                prepend-inner-icon="mdi-home-outline"
+                variant="outlined"
+                label="家族コード"
+                :error="form.errors.hasOwnProperty('family_code')"
+                @click:append-inner="visible = !visible"></v-text-field>
+
+            <!--            <div class="text-subtitle-1 text-medium-emphasis d-flex align-center justify-space-between">-->
+            <!--                <Link-->
+            <!--                    v-if="canResetPassword"-->
+            <!--                    class="text-caption text-primary ml-auto"-->
+            <!--                    :href="route('password.request')">-->
+            <!--                    パスワードを忘れた場合はこちら-->
+            <!--                </Link>-->
+            <!--            </div>-->
 
             <v-text-field
                 v-model="form.password"
@@ -80,14 +90,14 @@ const submit = () => {
                 ログイン
             </v-btn>
 
-            <v-card-text class="text-center">
-                <Link
-                    class="text-primary"
-                    :href="route('register')">
-                    アカウントをお持ちでない場合は登録
-                    <v-icon icon="mdi-chevron-right"></v-icon>
-                </Link>
-            </v-card-text>
+            <!--            <v-card-text class="text-center">-->
+            <!--                <Link-->
+            <!--                    class="text-primary"-->
+            <!--                    :href="route('register')">-->
+            <!--                    アカウントをお持ちでない場合は登録-->
+            <!--                    <v-icon icon="mdi-chevron-right"></v-icon>-->
+            <!--                </Link>-->
+            <!--            </v-card-text>-->
         </form>
     </AuthCard>
 </template>

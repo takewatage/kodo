@@ -15,6 +15,7 @@ class HomeController extends Controller
      */
     public function index(): Response
     {
+        $user = auth()->user();
         return Inertia::render('Home');
     }
 

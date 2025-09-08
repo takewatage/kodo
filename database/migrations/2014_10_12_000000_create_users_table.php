@@ -11,15 +11,14 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->uuid('id')->primary();
+            $table->string('name')->comment('ユーザー名');
             $table->string('url_name')->unique()->comment('@から始まるname');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('role')->default(0)->comment('権限');
             $table->text('introduction')->nullable();
-            $table->unsignedBigInteger('last_login_team_id')->nullable()->comment('最後にログインしていたteamID');
             $table->rememberToken();
             $table->timestamps();
         });

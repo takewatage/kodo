@@ -18,6 +18,7 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
+            'id' => $this->faker->uuid(),
             'name' => fake()->name(),
             'url_name' => '@' . fake()->unique()->text(5),
             'email' => fake()->unique()->safeEmail(),

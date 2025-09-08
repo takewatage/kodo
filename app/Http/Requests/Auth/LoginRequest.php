@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\Family;
+use App\Services\FamilyAuthService;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +13,8 @@ use Illuminate\Validation\ValidationException;
 
 class LoginRequest extends FormRequest
 {
+    protected ?Family $family = null;
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -29,6 +33,7 @@ class LoginRequest extends FormRequest
         return [
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
+            'family_code' => ['required', 'string'],
         ];
     }
 
@@ -41,13 +46,45 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (!Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        //        if (!Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        //            RateLimiter::hit($this->throttleKey());
+        //
+        //            throw ValidationException::withMessages([
+        //                'email' => trans('auth.failed'),
+        //            ]);
+        //        }
+        $service = new FamilyAuthService();
+        $family = $service->authenticateByFamilyCode($this->input('family_code'));
+        if (!$family) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),
             ]);
         }
+
+        $user = $service->authenticateMember($family, $this->input('email'), $this->input('password'));
+
+        if (!$user) {
+            RateLimiter::hit($this->throttleKey());
+
+            throw ValidationException::withMessages([
+                'email' => trans('auth.failed'),
+            ]);
+        }
+
+        // ユーザーが家族のメンバーかを再確認
+        if ($user->family_id !== $family->id) {
+            RateLimiter::hit($this->throttleKey());
+
+            throw ValidationException::withMessages([
+                'email' => 'この家族のメンバーではありません。',
+            ]);
+        }
+
+        Auth::login($user, $this->boolean('remember'));
+        $this->setFamilySession($family);
+        $this->family = $family;
 
         RateLimiter::clear($this->throttleKey());
     }
@@ -80,6 +117,34 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->input('email')) . '|' . $this->ip());
+        $email = Str::transliterate(Str::lower($this->input('email')));
+        $family_code = Str::upper($this->input('family_code'));
+
+        return $email . '|' . $family_code . '|' . $this->ip();
+    }
+
+    /**
+     * 家族情報をセッションに設定
+     */
+    protected function setFamilySession(?Family $family): void
+    {
+        if (!$family) {
+            return;
+        }
+
+        session([
+            'family_id' => $family->id,
+            'family_name' => $family->name,
+            'family_code' => $family->code,
+            'family_role' => Auth::user()->family_role,
+        ]);
+    }
+
+    /**
+     * Get the authenticated family.
+     */
+    public function getFamily(): ?Family
+    {
+        return $this->family;
     }
 }

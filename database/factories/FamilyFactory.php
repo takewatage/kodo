@@ -2,16 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\News;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class NewsFactory extends Factory
+class FamilyFactory extends Factory
 {
-    protected $model = News::class;
-
     /**
      * Define the model's default state.
      *
@@ -19,10 +17,13 @@ class NewsFactory extends Factory
      */
     public function definition(): array
     {
+        $user = User::all()->first();
+
         return [
-            'title' => fake()->title(),
-            'content' => fake()->text(),
-            'public_date' => fake()->dateTime,
+            'id' => $this->faker->uuid(),
+            'name' => fake()->name(),
+            'code' => fake()->unique()->password(10),
+            'owner_id' => $user->id,
         ];
     }
 }
