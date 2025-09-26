@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3'
 import { ref } from 'vue'
+import { useTab } from '@/composables/dok/useTab'
 
 const drawer = ref(false)
+const { tab } = useTab()
 </script>
 
 <template>
@@ -21,7 +23,21 @@ const drawer = ref(false)
                     variant="text"
                     @click.stop="drawer = !drawer" />
             </template>
-            <v-app-bar-title class="text-subtitle-1"></v-app-bar-title>
+            <v-tabs
+                v-model="tab"
+                grow
+                color="primary">
+                <v-tab value="dok">
+                    <v-icon icon="mdi-currency-usd"></v-icon>
+                </v-tab>
+
+                <v-tab value="todo">
+                    <v-icon icon="mdi-format-list-checks"></v-icon>
+                </v-tab>
+            </v-tabs>
+            <template #append>
+                <v-btn icon="mdi-dots-vertical" />
+            </template>
         </v-app-bar>
 
         <v-navigation-drawer

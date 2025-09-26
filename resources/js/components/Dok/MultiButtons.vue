@@ -41,7 +41,7 @@ const handleButtonClick = (button: ButtonOption) => {
             <v-btn
                 tabindex="-1"
                 :variant="button.variant ?? 'outlined'"
-                :color="button.color || 'dokPrimary'"
+                :color="button.color || 'primary'"
                 class="calculator-button"
                 :class="{ 'text-white': button.isDark }"
                 elevation="2"

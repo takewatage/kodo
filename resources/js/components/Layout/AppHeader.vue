@@ -25,29 +25,7 @@ const tabValue = ref(route().current())
 
         <v-spacer></v-spacer>
 
-        <v-tabs
-            v-model="tabValue"
-            class="mt-auto"
-            centered
-            color="primary">
-            <v-tab
-                v-for="link in menu"
-                :key="link.title + '_tab'"
-                :text="link.title ?? ''"
-                :value="link.href"></v-tab>
-        </v-tabs>
-        <v-spacer></v-spacer>
-
         <AppHeaderMenuIcon />
-
-        <v-btn
-            color="primary"
-            variant="flat"
-            @click="dialog = true">
-            投稿
-        </v-btn>
-
-        <PostEditDialog v-model:active="dialog" />
     </v-app-bar>
 </template>
 

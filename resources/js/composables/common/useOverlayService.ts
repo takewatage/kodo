@@ -33,7 +33,6 @@ export interface OverlayOptions<TProps = Record<string, unknown>, TResult = unkn
 export interface OverlayInstance<TResult = unknown> {
     close: (result?: TResult) => void
     afterClosed: () => Promise<TResult | undefined>
-    update: (options: Partial<OverlayOptions>) => void
 }
 
 declare global {
@@ -71,10 +70,6 @@ export function useOverlayService() {
                 container?.remove()
                 resolvePromise(result)
             }, 300)
-        }
-
-        const update = (newOptions: Partial<OverlayOptions>): void => {
-            overlayOptions.value = { ...overlayOptions.value, ...newOptions }
         }
 
         // オーバーレイラッパーコンポーネント
@@ -175,7 +170,6 @@ export function useOverlayService() {
         return {
             close,
             afterClosed: () => afterClosedPromise,
-            update,
         }
     }
 

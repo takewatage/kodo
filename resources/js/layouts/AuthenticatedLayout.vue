@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import AppHeader from '@/components/Layout/AppHeader.vue'
 import { Head } from '@inertiajs/vue3'
-
-
 </script>
 
 <template>
@@ -13,7 +11,7 @@ import { Head } from '@inertiajs/vue3'
                 content="KoDo" />
         </Head>
 
-        <AppHeader :menu="list" />
+        <AppHeader />
 
         <v-main>
             <Transition

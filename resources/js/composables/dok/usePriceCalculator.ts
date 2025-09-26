@@ -160,32 +160,6 @@ export const usePriceCalculator = () => {
         }
     }
 
-    // // 商品Aの計算結果
-    // const resultA = computed(() => {
-    //     if (!showResults.value) return null
-    //     return calculateUnitPrice(productA.value)
-    // })
-    //
-    // // 商品Bの計算結果
-    // const resultB = computed(() => {
-    //     if (!showResults.value) return null
-    //     return calculateUnitPrice(productB.value)
-    // })
-
-    // どちらがお得かの判定
-    // const comparison = computed(() => {
-    //     if (!resultA.value || !resultB.value) return null
-    //
-    //     const difference = Math.abs(resultA.value.pricePerUnit - resultB.value.pricePerUnit)
-    //     const percentDiff = (difference / Math.max(resultA.value.pricePerUnit, resultB.value.pricePerUnit)) * 100
-    //
-    //     return {
-    //         cheaperProduct: resultA.value.pricePerUnit < resultB.value.pricePerUnit ? 'A' : 'B',
-    //         difference,
-    //         percentDiff,
-    //     }
-    // })
-
     // リセット処理
     const resetAll = () => {
         productA.value = { price: '', quantity: '', packCount: '' }
@@ -199,16 +173,16 @@ export const usePriceCalculator = () => {
     const productFormReset = (productName: ProductNameType): void => {
         resultProduct.value = undefined
         if (productName == 'A') {
-            productA.value = { price: '', quantity: '', packCount: '' }
+            productA.value = { price: '', quantity: '1', packCount: '' }
         }
         if (productName == 'B') {
-            productB.value = { price: '', quantity: '', packCount: '' }
+            productB.value = { price: '', quantity: '1', packCount: '' }
         }
     }
 
     // フォームがアクティブかチェック
     const isFormActive = (product: ProductNameType, field: FieldType): boolean => {
-        return activeProduct.value === product && activeField.value === field && isKeyboardVisible.value
+        return activeProduct.value === product && activeField.value === field
     }
 
     return {
